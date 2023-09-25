@@ -1,0 +1,246 @@
+[gd_scene load_steps=21 format=3 uid="uid://c4i4wpweecm6m"]
+
+[ext_resource type="Texture2D" uid="uid://bmkxrwdikbrim" path="res://assets/area-assets/urban-street-assets/area-constituents/tile2.png" id="1_j10e7"]
+[ext_resource type="Texture2D" uid="uid://cyr7t7cfvkrrw" path="res://assets/area-assets/urban-street-assets/area-constituents/tile1.png" id="2_xtgd6"]
+[ext_resource type="Texture2D" uid="uid://cnwwv7qh5dnsf" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-door1.png" id="3_0rrb2"]
+[ext_resource type="Texture2D" uid="uid://bpu6sok11gjb5" path="res://assets/area-assets/urban-street-assets/area-constituents/tile5.png" id="4_ku2i3"]
+[ext_resource type="Texture2D" uid="uid://coow80aryssfb" path="res://assets/area-assets/urban-street-assets/area-constituents/tile3.png" id="5_y135i"]
+[ext_resource type="Texture2D" uid="uid://c1bub230dymt3" path="res://assets/area-assets/urban-street-assets/area-constituents/stairs-down.png" id="6_ywutu"]
+[ext_resource type="Texture2D" uid="uid://djt6ujkfhxtmg" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-stain.png" id="7_a2vsc"]
+[ext_resource type="Texture2D" uid="uid://cyuetg1sxeiwv" path="res://assets/area-assets/urban-street-assets/area-constituents/big-tile1.png" id="8_3e2ld"]
+[ext_resource type="Texture2D" uid="uid://dfllckdmshm7b" path="res://assets/area-assets/urban-street-assets/area-constituents/front-face-of-tile-with-trim.png" id="9_o2cgp"]
+[ext_resource type="Texture2D" uid="uid://b48n24cqniv4t" path="res://assets/area-assets/urban-street-assets/area-constituents/tile4.png" id="10_tb6pp"]
+[ext_resource type="Texture2D" uid="uid://cggprocmtkih0" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-panel1.png" id="11_e0rw5"]
+[ext_resource type="Texture2D" uid="uid://56kpn5t75utc" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-stained-window1.png" id="12_2uvul"]
+[ext_resource type="Texture2D" uid="uid://cp6o6xot3n0il" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-panel2.png" id="13_nki8j"]
+[ext_resource type="Texture2D" uid="uid://b1fvi6rwhur3m" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-vents.png" id="14_83iie"]
+[ext_resource type="Texture2D" uid="uid://bmnni0275a7oq" path="res://assets/area-assets/urban-street-assets/area-constituents/roof1.png" id="15_mcp7l"]
+[ext_resource type="Texture2D" uid="uid://dbmm8hebl04ec" path="res://assets/area-assets/urban-street-assets/area-constituents/green-shade1.png" id="16_gv48v"]
+[ext_resource type="Texture2D" uid="uid://b1fsb58cm7vqa" path="res://assets/area-assets/urban-street-assets/area-constituents/building-top-floor1.png" id="17_6331x"]
+[ext_resource type="Texture2D" uid="uid://b3itdivikhnvq" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-window.png" id="18_qt4oi"]
+[ext_resource type="Texture2D" uid="uid://b8146dxx7whud" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-appliance2.png" id="19_go0ni"]
+[ext_resource type="Texture2D" uid="uid://bhamkig6uuvbp" path="res://assets/area-assets/urban-street-assets/props-and-items/vending-machine.png" id="20_nq2cy"]
+
+[node name="BG" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Tile2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(168, 219)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(183, 219)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(200, 219)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(216, 219)
+texture = ExtResource("2_xtgd6")
+
+[node name="Tile5" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 219)
+texture = ExtResource("1_j10e7")
+
+[node name="Wall-with-door1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 195)
+texture = ExtResource("3_0rrb2")
+
+[node name="Tile6" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(249.25, 219)
+scale = Vector2(1.02941, 1)
+texture = ExtResource("4_ku2i3")
+
+[node name="Tile7" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(168, 235)
+texture = ExtResource("5_y135i")
+
+[node name="Tile8" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 235)
+texture = ExtResource("1_j10e7")
+
+[node name="Stairs-down" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(233, 251)
+texture = ExtResource("6_ywutu")
+
+[node name="Tile9" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(200, 235)
+texture = ExtResource("2_xtgd6")
+
+[node name="Tile10" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(216, 235)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile11" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(233, 235)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile12" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(249.75, 235)
+scale = Vector2(0.970588, 1)
+texture = ExtResource("1_j10e7")
+
+[node name="Wall-with-stain" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 195.25)
+scale = Vector2(1, 0.984848)
+texture = ExtResource("7_a2vsc")
+
+[node name="Big-tile1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(274, 227)
+texture = ExtResource("8_3e2ld")
+
+[node name="Front-face-of-tile-with-trim" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(168, 251)
+texture = ExtResource("9_o2cgp")
+
+[node name="Front-face-of-tile-with-trim2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 251)
+texture = ExtResource("9_o2cgp")
+
+[node name="Front-face-of-tile-with-trim3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(200.5, 251)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("9_o2cgp")
+
+[node name="Front-face-of-tile-with-trim4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(265, 251)
+texture = ExtResource("9_o2cgp")
+
+[node name="Front-face-of-tile-with-trim5" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(281, 251)
+texture = ExtResource("9_o2cgp")
+
+[node name="Tile13" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(214, 267)
+texture = ExtResource("5_y135i")
+
+[node name="Tile14" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(230, 267)
+texture = ExtResource("1_j10e7")
+
+[node name="Big-tile2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(254, 275)
+texture = ExtResource("8_3e2ld")
+
+[node name="Tile15" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(230, 283)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile16" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(214, 283)
+texture = ExtResource("1_j10e7")
+
+[node name="Tile17" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(261, 283)
+texture = ExtResource("5_y135i")
+
+[node name="Big-tile3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(190, 275)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(158, 275)
+rotation = 1.5708
+texture = ExtResource("8_3e2ld")
+
+[node name="Tile18" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(151, 267)
+texture = ExtResource("10_tb6pp")
+
+[node name="Big-tile5" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(286, 275)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile6" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(286, 306)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile7" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(254, 306)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile8" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(222, 306)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile9" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(190, 306)
+texture = ExtResource("8_3e2ld")
+
+[node name="Big-tile10" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(158, 306)
+rotation = 1.5708
+texture = ExtResource("8_3e2ld")
+
+[node name="Wall-with-panel1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 162.5)
+scale = Vector2(1, 1)
+texture = ExtResource("11_e0rw5")
+
+[node name="Wall-with-stained-window1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(280, 195.25)
+scale = Vector2(1, 0.984848)
+texture = ExtResource("12_2uvul")
+
+[node name="Wall-with-panel2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 162.75)
+scale = Vector2(1, 1.01515)
+texture = ExtResource("13_nki8j")
+
+[node name="Wall-with-vents" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 130)
+texture = ExtResource("14_83iie")
+
+[node name="Roof1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 103.25)
+scale = Vector2(1, 0.418367)
+texture = ExtResource("15_mcp7l")
+
+[node name="Green-shade1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(184, 103)
+scale = Vector2(2.625, 1.125)
+texture = ExtResource("16_gv48v")
+
+[node name="Building-top-floor1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 138)
+texture = ExtResource("17_6331x")
+
+[node name="Roof2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 111.75)
+scale = Vector2(1, 0.765306)
+texture = ExtResource("15_mcp7l")
+
+[node name="Green-shade2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(232, 112.5)
+scale = Vector2(2.625, 1.9375)
+texture = ExtResource("16_gv48v")
+
+[node name="Wall-with-window" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(280, 162.75)
+scale = Vector2(1, 1.01515)
+texture = ExtResource("18_qt4oi")
+
+[node name="Wall-with-appliance2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(280, 130)
+texture = ExtResource("19_go0ni")
+
+[node name="Roof3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(280, 103.75)
+scale = Vector2(1, 0.438776)
+texture = ExtResource("15_mcp7l")
+
+[node name="Green-shade3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(280, 104)
+scale = Vector2(2.625, 1.125)
+texture = ExtResource("16_gv48v")
+
+[node name="Big-tile11" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(305, 227)
+texture = ExtResource("8_3e2ld")
+
+[node name="Vending-machine" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(292, 251)
+texture = ExtResource("20_nq2cy")
