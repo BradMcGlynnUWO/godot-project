@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="Temporal Mirage - Cybernetic Reclaim"
-<<<<<<< HEAD
-run/main_scene="res://Player/Player.tscn"
-=======
-run/main_scene="res://areas/urban-streets/home.tscn"
->>>>>>> 4a49e4ce27cccfefb9f12cdba375b176b26467c8
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="res://Player/Player.tscn"
 
 [rendering]
 

@@ -1,6 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://bp6pci46bo54j"]
+[gd_scene load_steps=13 format=3 uid="uid://cifihj21aksf8"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_m3tp6"]
+[sub_resource type="GDScript" id="GDScript_bndsf"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 200.0  # Adjust as needed
+
+@onready var anim = get_node(\"AnimationPlayer\")
+@onready var sprite = get_node(\"AnimatedSprite2D\")  # Assuming the node name is AnimatedSprite2D, adjust if needed
+
+func _physics_process(delta):
+	var direction = Vector2.ZERO  # Initialize a zero vector for direction
+	
+	# Handle the input for both horizontal and vertical directions
+	if Input.is_action_pressed('ui_right'):
+		direction.x += 1
+		sprite.flip_h = false  # Face right
+	if Input.is_action_pressed('ui_left'):
+		direction.x -= 1
+		sprite.flip_h = true  # Face left
+	if Input.is_action_pressed('ui_down'):
+		direction.y += 1
+	if Input.is_action_pressed('ui_up'):
+		direction.y -= 1
+	
+	# Normalize the direction vector to avoid faster diagonal movement
+	if direction.length() > 0:
+		direction = direction.normalized()
+		anim.play(\"Run\")  # Play run animation when moving
+	else:
+		anim.play(\"Idle\")  # Play idle animation when not moving
+	
+	# Move the character in the direction input by the user
+	velocity = direction * SPEED
+	move_and_slide()
+	
+	# Handle other game logic like changing scenes or player death
+	#if Game.playerHP <= 0:
+	#	queue_free()
+	#	get_tree().change_scene_to_file(\"res://main.tscn\")
+	
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		queue_free()
+		get_tree().change_scene_to_file(\"res://main.tscn\")
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eawrj"]
 radius = 6.0
@@ -219,7 +261,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_m3tp6")
+script = SubResource("GDScript_bndsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9)
