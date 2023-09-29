@@ -1,11 +1,15 @@
-extends Sprite2D
+extends BaseCharacter
 
+var can_shoot: bool = true
 
-const SPEED = 200.0  # Adjust as needed
+func _ready():
+	health = 100 # Example health value
+	movement_speed = 200.0 # Example movement speed value
+	weapon_slot = MachineGun.new() # Assign a machine gun instance.
 
 func _process(delta):
+	#print("Player is at: ", global_position) # Print the position of the player
 	var direction = Vector2.ZERO
-	
 	if Input.is_action_pressed('ui_right'):
 		direction.x += 1
 	if Input.is_action_pressed('ui_left'):
@@ -15,7 +19,19 @@ func _process(delta):
 	if Input.is_action_pressed('ui_up'):
 		direction.y -= 1
 	
-	if direction.length() > 0:
-		direction = direction.normalized()
-	
-	position += direction * SPEED * delta
+	move(direction, delta) # Pass delta to the move function
+
+	if Input.is_action_pressed('ui_select') and can_shoot:
+		shoot()
+
+func shoot() -> void:
+	var target_position = get_global_mouse_position() # Get the global position of the mouse cursor
+	weapon_slot.use_weapon(self, target_position) # Pass the Character instance and target_position to the use_weapon function
+	can_shoot = false
+	var timer = get_tree().create_timer(1.0 / weapon_slot.fire_rate) # Create a timer
+	await timer.timeout # Wait for the timer to timeout
+	can_shoot = true
+
+
+
+

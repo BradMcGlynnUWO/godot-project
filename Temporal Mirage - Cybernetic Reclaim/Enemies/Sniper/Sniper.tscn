@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cex78v1g285th"]
+
+[ext_resource type="Script" path="res://Enemies/Sniper/Sniper.gd" id="1_ypbb6"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_4oeg8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4cd8"]
+radius = 773.266
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41h0k"]
+size = Vector2(59, 107)
+
+[node name="Sniper" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_ypbb6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4oeg8")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_m4cd8")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_41h0k")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,21 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://puyaol6pksee"]
+[gd_scene load_steps=5 format=3 uid="uid://puyaol6pksee"]
 
-[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="1_4obrq"]
 [ext_resource type="Texture2D" uid="uid://cems3ltevh2ei" path="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall.png" id="1_r4rrm"]
-[ext_resource type="Script" path="res://Player/Character.gd" id="3_8178n"]
+[ext_resource type="Script" path="res://main.gd" id="1_wsts2"]
+[ext_resource type="PackedScene" uid="uid://dpcm8geih7cme" path="res://Player/Character.tscn" id="4_2e4nm"]
+[ext_resource type="PackedScene" uid="uid://cex78v1g285th" path="res://Enemies/Sniper/Sniper.tscn" id="4_o1l71"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_wsts2")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(2556, 1724)
+position = Vector2(1745, 1155)
 scale = Vector2(109.156, 92.6087)
 texture = ExtResource("1_r4rrm")
 
-[node name="Character" type="Sprite2D" parent="."]
-position = Vector2(21, 77.5)
-scale = Vector2(0.21875, 0.164063)
-texture = ExtResource("1_4obrq")
-script = ExtResource("3_8178n")
+[node name="BaseCharacter" parent="." instance=ExtResource("4_2e4nm")]
+position = Vector2(932, 329)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-18, 3)
+[node name="Camera2D" type="Camera2D" parent="BaseCharacter"]
+position = Vector2(86, 19)
+zoom = Vector2(0.3, 0.3)
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Sniper" parent="Enemies" instance=ExtResource("4_o1l71")]
+position = Vector2(-95, -233)
