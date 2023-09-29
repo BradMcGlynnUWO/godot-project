@@ -23,8 +23,14 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			printerr("Bullet instantiation failed!")
 			return
 
-		bullet_instance.global_position = character.global_position
 		var direction = (target_position - character.global_position).normalized()
+		
+		# Adjust the bullet’s position
+		var offset = 150
+		bullet_instance.global_position = character.global_position + direction * offset
+		
+		# Add collision exception
+		#bullet_instance.add_collision_exception_with(character)
 		bullet_instance.setup(direction, bullet_speed, damage, weapon_range)
 		if bullet_instance == null:
 			printerr("Bullet instance is null after setup!")

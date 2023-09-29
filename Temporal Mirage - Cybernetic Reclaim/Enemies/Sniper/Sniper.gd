@@ -11,6 +11,8 @@ func _ready():
 	health = 50
 	movement_speed = 150.0
 	weapon_slot = SniperRifle.new()
+	collision_layer = 2 # Set to Enemy layer
+	collision_mask = 5  # Set to interact with Player and Bullet layers
 
 	# Setup detection area
 	var detection_shape: CircleShape2D = CircleShape2D.new()

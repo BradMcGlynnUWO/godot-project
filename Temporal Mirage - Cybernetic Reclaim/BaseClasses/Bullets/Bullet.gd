@@ -9,7 +9,8 @@ func _process(delta):
 	var line = Line2D.new() # Create a new Line2D instance
 	line.width = 2.0 # Set the width of the line
 	add_child(line) # Add the line as a child of the bullet
-	
+	collision_layer = 4 # Set to Bullet layer
+	collision_mask = 3  # Set to interact with Player and Enemy layers
 	
 	print("Bullet is at: ", global_position) # Print the position of the bullet
 	global_position += direction * speed * delta

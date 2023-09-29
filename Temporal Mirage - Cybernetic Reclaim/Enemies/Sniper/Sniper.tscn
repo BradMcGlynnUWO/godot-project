@@ -7,7 +7,7 @@
 radius = 773.266
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41h0k"]
-size = Vector2(59, 107)
+size = Vector2(116, 111.5)
 
 [node name="Sniper" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_ypbb6")
@@ -21,6 +21,7 @@ texture = ExtResource("2_4oeg8")
 shape = SubResource("CircleShape2D_m4cd8")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.25)
 shape = SubResource("RectangleShape2D_41h0k")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

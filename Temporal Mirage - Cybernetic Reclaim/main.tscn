@@ -22,7 +22,7 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="Bullets" type="Node2D" parent="."]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="." groups=["enemies"]]
 
 [node name="Sniper" parent="Enemies" instance=ExtResource("4_o1l71")]
 position = Vector2(-95, -233)

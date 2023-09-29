@@ -6,6 +6,8 @@ func _ready():
 	health = 100 # Example health value
 	movement_speed = 200.0 # Example movement speed value
 	weapon_slot = MachineGun.new() # Assign a machine gun instance.
+	collision_layer = 1 # Set to Player layer
+	collision_mask = 4  # Set to interact with Bullet layer
 
 func _process(delta):
 	#print("Player is at: ", global_position) # Print the position of the player
