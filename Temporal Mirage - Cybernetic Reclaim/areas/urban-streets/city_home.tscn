@@ -1,0 +1,270 @@
+[gd_scene load_steps=23 format=3 uid="uid://db3ofrxx6v1tx"]
+
+[ext_resource type="Texture2D" uid="uid://bmkxrwdikbrim" path="res://assets/area-assets/urban-street-assets/area-constituents/tile2.png" id="1_gt1nx"]
+[ext_resource type="Texture2D" uid="uid://cyr7t7cfvkrrw" path="res://assets/area-assets/urban-street-assets/area-constituents/tile1.png" id="2_8ocyn"]
+[ext_resource type="Texture2D" uid="uid://cnwwv7qh5dnsf" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-door1.png" id="3_c2b55"]
+[ext_resource type="Texture2D" uid="uid://bpu6sok11gjb5" path="res://assets/area-assets/urban-street-assets/area-constituents/tile5.png" id="4_03jr1"]
+[ext_resource type="Texture2D" uid="uid://coow80aryssfb" path="res://assets/area-assets/urban-street-assets/area-constituents/tile3.png" id="5_n3s0d"]
+[ext_resource type="Texture2D" uid="uid://c1bub230dymt3" path="res://assets/area-assets/urban-street-assets/area-constituents/stairs-down.png" id="6_r2shs"]
+[ext_resource type="Texture2D" uid="uid://djt6ujkfhxtmg" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-stain.png" id="7_7djt0"]
+[ext_resource type="Texture2D" uid="uid://cyuetg1sxeiwv" path="res://assets/area-assets/urban-street-assets/area-constituents/big-tile1.png" id="8_pbtse"]
+[ext_resource type="Texture2D" uid="uid://dfllckdmshm7b" path="res://assets/area-assets/urban-street-assets/area-constituents/front-face-of-tile-with-trim.png" id="9_2l1rl"]
+[ext_resource type="Texture2D" uid="uid://b48n24cqniv4t" path="res://assets/area-assets/urban-street-assets/area-constituents/tile4.png" id="10_c8tew"]
+[ext_resource type="Texture2D" uid="uid://cggprocmtkih0" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-panel1.png" id="11_3imb6"]
+[ext_resource type="Texture2D" uid="uid://56kpn5t75utc" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-stained-window1.png" id="12_xgo56"]
+[ext_resource type="Texture2D" uid="uid://cp6o6xot3n0il" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-panel2.png" id="13_a506d"]
+[ext_resource type="Texture2D" uid="uid://b1fvi6rwhur3m" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-vents.png" id="14_ewgm6"]
+[ext_resource type="Texture2D" uid="uid://bmnni0275a7oq" path="res://assets/area-assets/urban-street-assets/area-constituents/roof1.png" id="15_ie7xx"]
+[ext_resource type="Texture2D" uid="uid://dbmm8hebl04ec" path="res://assets/area-assets/urban-street-assets/area-constituents/green-shade1.png" id="16_0uh6a"]
+[ext_resource type="Texture2D" uid="uid://b1fsb58cm7vqa" path="res://assets/area-assets/urban-street-assets/area-constituents/building-top-floor1.png" id="17_q3rml"]
+[ext_resource type="Texture2D" uid="uid://b3itdivikhnvq" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-window.png" id="18_1c5et"]
+[ext_resource type="Texture2D" uid="uid://b8146dxx7whud" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-appliance2.png" id="19_jqv2k"]
+[ext_resource type="Texture2D" uid="uid://bhamkig6uuvbp" path="res://assets/area-assets/urban-street-assets/props-and-items/vending-machine.png" id="20_xrv5p"]
+[ext_resource type="Texture2D" uid="uid://dljvs7l3vmy8h" path="res://assets/area-assets/urban-street-assets/area-constituents/stairs-right.png" id="21_kicng"]
+[ext_resource type="Texture2D" uid="uid://bhga1s6yh4m40" path="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall3.png" id="22_dx1lq"]
+
+[node name="city-home" type="Node2D"]
+
+[node name="city-scape" type="ParallaxBackground" parent="."]
+
+[node name="floor-top" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Tile2" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(168, 219)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile3" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(183, 219)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile4" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(200, 219)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile1" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(216, 219)
+texture = ExtResource("2_8ocyn")
+
+[node name="Tile5" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(232, 219)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile6" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(249.25, 219)
+scale = Vector2(1.02941, 1)
+texture = ExtResource("4_03jr1")
+
+[node name="Tile7" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(168, 235)
+texture = ExtResource("5_n3s0d")
+
+[node name="Tile8" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(184, 235)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile9" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(200, 235)
+texture = ExtResource("2_8ocyn")
+
+[node name="Tile10" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(216, 235)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile11" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(233, 235)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile12" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(249.75, 235)
+scale = Vector2(0.970588, 1)
+texture = ExtResource("1_gt1nx")
+
+[node name="Big-tile1" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(274, 227)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile11" type="Sprite2D" parent="city-scape/floor-top"]
+position = Vector2(305, 227)
+texture = ExtResource("8_pbtse")
+
+[node name="building-top1" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Roof1" type="Sprite2D" parent="city-scape/building-top1"]
+position = Vector2(184, 103.25)
+scale = Vector2(1, 0.418367)
+texture = ExtResource("15_ie7xx")
+
+[node name="Green-shade1" type="Sprite2D" parent="city-scape/building-top1"]
+position = Vector2(184, 103)
+scale = Vector2(2.625, 1.125)
+texture = ExtResource("16_0uh6a")
+
+[node name="Wall-with-door1" type="Sprite2D" parent="city-scape/building-top1"]
+position = Vector2(184, 195)
+texture = ExtResource("3_c2b55")
+
+[node name="Wall-with-panel2" type="Sprite2D" parent="city-scape/building-top1"]
+position = Vector2(184, 162.75)
+scale = Vector2(1, 1.01515)
+texture = ExtResource("13_a506d")
+
+[node name="Wall-with-vents" type="Sprite2D" parent="city-scape/building-top1"]
+position = Vector2(184, 130)
+texture = ExtResource("14_ewgm6")
+
+[node name="building-top2" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Wall-with-panel1" type="Sprite2D" parent="city-scape/building-top2"]
+position = Vector2(232, 162.5)
+texture = ExtResource("11_3imb6")
+
+[node name="Building-top-floor1" type="Sprite2D" parent="city-scape/building-top2"]
+position = Vector2(232, 138)
+texture = ExtResource("17_q3rml")
+
+[node name="Green-shade2" type="Sprite2D" parent="city-scape/building-top2"]
+position = Vector2(232, 112.5)
+scale = Vector2(2.625, 1.9375)
+texture = ExtResource("16_0uh6a")
+
+[node name="Roof2" type="Sprite2D" parent="city-scape/building-top2"]
+position = Vector2(232, 111.75)
+scale = Vector2(1, 0.765306)
+texture = ExtResource("15_ie7xx")
+
+[node name="Wall-with-stain" type="Sprite2D" parent="city-scape/building-top2"]
+position = Vector2(232, 195.25)
+scale = Vector2(1, 0.984848)
+texture = ExtResource("7_7djt0")
+
+[node name="building-top3" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Wall-with-window" type="Sprite2D" parent="city-scape/building-top3"]
+position = Vector2(280, 162.75)
+scale = Vector2(1, 1.01515)
+texture = ExtResource("18_1c5et")
+
+[node name="Wall-with-appliance2" type="Sprite2D" parent="city-scape/building-top3"]
+position = Vector2(280, 130)
+texture = ExtResource("19_jqv2k")
+
+[node name="Roof3" type="Sprite2D" parent="city-scape/building-top3"]
+position = Vector2(280, 103.75)
+scale = Vector2(1, 0.438776)
+texture = ExtResource("15_ie7xx")
+
+[node name="Green-shade3" type="Sprite2D" parent="city-scape/building-top3"]
+position = Vector2(280, 104)
+scale = Vector2(2.625, 1.125)
+texture = ExtResource("16_0uh6a")
+
+[node name="Wall-with-stained-window1" type="Sprite2D" parent="city-scape/building-top3"]
+position = Vector2(280, 195.25)
+scale = Vector2(1, 0.984848)
+texture = ExtResource("12_xgo56")
+
+[node name="floor-top-middle-separator" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Front-face-of-tile-with-trim" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(168, 251)
+texture = ExtResource("9_2l1rl")
+
+[node name="Front-face-of-tile-with-trim2" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(184, 251)
+texture = ExtResource("9_2l1rl")
+
+[node name="Front-face-of-tile-with-trim3" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(200.5, 251)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("9_2l1rl")
+
+[node name="Front-face-of-tile-with-trim4" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(265, 251)
+texture = ExtResource("9_2l1rl")
+
+[node name="Front-face-of-tile-with-trim5" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(281, 251)
+texture = ExtResource("9_2l1rl")
+
+[node name="Stairs-down" type="Sprite2D" parent="city-scape/floor-top-middle-separator"]
+position = Vector2(233, 251)
+texture = ExtResource("6_r2shs")
+
+[node name="floor-middle" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Big-tile5" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(286, 275)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile6" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(286, 306)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile7" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(254, 306)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile8" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(222, 306)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile9" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(190, 306)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile10" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(158, 306)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Vending-machine" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(292, 251)
+texture = ExtResource("20_xrv5p")
+
+[node name="Big-tile2" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(254, 275)
+texture = ExtResource("8_pbtse")
+
+[node name="Tile15" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(230, 283)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile16" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(214, 283)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile17" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(261, 283)
+texture = ExtResource("5_n3s0d")
+
+[node name="Big-tile3" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(190, 275)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile4" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(158, 275)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Tile18" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(151, 267)
+texture = ExtResource("10_c8tew")
+
+[node name="Tile13" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(214, 267)
+texture = ExtResource("5_n3s0d")
+
+[node name="Tile14" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(230, 267)
+texture = ExtResource("1_gt1nx")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Stairs-right" type="Sprite2D" parent="."]
+position = Vector2(303, 338)
+texture = ExtResource("21_kicng")
+
+[node name="Alleyway-wall3" type="Sprite2D" parent="."]
+position = Vector2(270.125, 346)
+scale = Vector2(0.962121, 1)
+texture = ExtResource("22_dx1lq")
