@@ -35,8 +35,10 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 		if bullet_instance == null:
 			printerr("Bullet instance is null after setup!")
 			return
-
-		character.get_tree().get_root().get_node("main/Bullets").add_child(bullet_instance)
+		
+		# might want to make this a more global variable if we start to need it in multiple places
+		var character_parent = character.get_parent()
+		character_parent.get_node("./Bullets").add_child(bullet_instance)
 
 		can_shoot = false
 		var timer = character.get_tree().create_timer(1.0 / fire_rate) # Create a timer

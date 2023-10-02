@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://db3ofrxx6v1tx"]
+[gd_scene load_steps=24 format=3 uid="uid://db3ofrxx6v1tx"]
 
 [ext_resource type="Texture2D" uid="uid://bmkxrwdikbrim" path="res://assets/area-assets/urban-street-assets/area-constituents/tile2.png" id="1_gt1nx"]
 [ext_resource type="Texture2D" uid="uid://cyr7t7cfvkrrw" path="res://assets/area-assets/urban-street-assets/area-constituents/tile1.png" id="2_8ocyn"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bhamkig6uuvbp" path="res://assets/area-assets/urban-street-assets/props-and-items/vending-machine.png" id="20_xrv5p"]
 [ext_resource type="Texture2D" uid="uid://dljvs7l3vmy8h" path="res://assets/area-assets/urban-street-assets/area-constituents/stairs-right.png" id="21_kicng"]
 [ext_resource type="Texture2D" uid="uid://bhga1s6yh4m40" path="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall3.png" id="22_dx1lq"]
+[ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="23_u5v2p"]
 
 [node name="city-home" type="Node2D"]
 
@@ -258,13 +259,18 @@ texture = ExtResource("5_n3s0d")
 position = Vector2(230, 267)
 texture = ExtResource("1_gt1nx")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="city-scape"]
+[node name="floor-middle--bottom-separator" type="ParallaxLayer" parent="city-scape"]
 
-[node name="Stairs-right" type="Sprite2D" parent="."]
+[node name="Stairs-right" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
 position = Vector2(303, 338)
 texture = ExtResource("21_kicng")
 
-[node name="Alleyway-wall3" type="Sprite2D" parent="."]
+[node name="Alleyway-wall3" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
 position = Vector2(270.125, 346)
 scale = Vector2(0.962121, 1)
 texture = ExtResource("22_dx1lq")
+
+[node name="BaseCharacter" parent="." instance=ExtResource("23_u5v2p")]
+position = Vector2(408, 229)
+
+[node name="Bullets" type="Node2D" parent="."]

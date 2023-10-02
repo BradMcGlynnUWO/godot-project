@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di6jjru01yalk"
-path="res://.godot/imported/neo_zero_char_01.png-77b691fcb95ffed4bf3964c39aae26d5.ctex"
+uid="uid://vr4p2qp7pxey"
+path="res://.godot/imported/tile029.png-af29e4e20b372481db574945b93701ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder-assets/neo_zero_char_01.png"
-dest_files=["res://.godot/imported/neo_zero_char_01.png-77b691fcb95ffed4bf3964c39aae26d5.ctex"]
+source_file="res://assets/placeholder-assets/neo-zero-character/yellow/walk-left/tile029.png"
+dest_files=["res://.godot/imported/tile029.png-af29e4e20b372481db574945b93701ee.ctex"]
 
 [params]
 

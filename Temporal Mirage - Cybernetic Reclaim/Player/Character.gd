@@ -2,6 +2,8 @@ extends BaseCharacter
 
 var can_shoot: bool = true
 
+@onready var anim = get_node("AnimationPlayer")
+
 func _ready():
 	health = 100 # Example health value
 	movement_speed = 200.0 # Example movement speed value
@@ -13,12 +15,16 @@ func _process(delta):
 	#print("Player is at: ", global_position) # Print the position of the player
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed('ui_right'):
+		anim.play("walk-right-blue")
 		direction.x += 1
 	if Input.is_action_pressed('ui_left'):
+		anim.play("walk-left-blue")
 		direction.x -= 1
 	if Input.is_action_pressed('ui_down'):
+		anim.play("walk-towards-blue")
 		direction.y += 1
 	if Input.is_action_pressed('ui_up'):
+		anim.play("walk-away-blue")
 		direction.y -= 1
 	
 	move(direction, delta) # Pass delta to the move function
