@@ -5,12 +5,13 @@ var can_shoot: bool = true
 func _ready():
 	health = 100 # Example health value
 	movement_speed = 200.0 # Example movement speed value
-	weapon_slot = MachineGun.new() # Assign a machine gun instance.
-	collision_layer = 1 # Set to Player layer
-	collision_mask = 4  # Set to interact with Bullet layer
+	var gun_instance = MachineGun.new()
+	add_child(gun_instance)
+	weapon_slot = gun_instance
+	collision_layer = 1 << 0 # This sets the first bit, representing layer 1
+	collision_mask = 1 << 2  # This sets the third bit, representing layer 3 (Bullet)
 
 func _process(delta):
-	#print("Player is at: ", global_position) # Print the position of the player
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed('ui_right'):
 		direction.x += 1

@@ -9,7 +9,7 @@ size = Vector2(122, 121)
 [node name="BaseCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_5yn6c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_qx4y3")
 

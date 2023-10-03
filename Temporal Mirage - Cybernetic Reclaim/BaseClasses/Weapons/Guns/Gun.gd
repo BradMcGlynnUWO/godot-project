@@ -10,7 +10,11 @@ var can_shoot: bool = true
 
 
 func _ready():
+	
 	print("Gun class initialized")
+	print("Gun _ready()")
+	print("damage:", damage)
+	print("fire_rate:", fire_rate)
 	print("bullet_scene: ", bullet_scene)
 	print("Node is active: ", is_inside_tree())
 	print("Script is executed")
@@ -45,6 +49,7 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 		print("Character Position: ", character.global_position)
 		print("Target Position: ", target_position)
 		print("Bullet Direction: ", direction)
+
 func _on_timer_timeout():
 	can_shoot = true # Reset can_shoot when the timer times out
 	

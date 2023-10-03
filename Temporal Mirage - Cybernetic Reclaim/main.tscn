@@ -14,7 +14,8 @@ scale = Vector2(109.156, 92.6087)
 texture = ExtResource("1_r4rrm")
 
 [node name="BaseCharacter" parent="." instance=ExtResource("4_2e4nm")]
-position = Vector2(932, 329)
+position = Vector2(606, 137)
+scale = Vector2(0.442622, 0.602148)
 
 [node name="Camera2D" type="Camera2D" parent="BaseCharacter"]
 position = Vector2(86, 19)
@@ -26,3 +27,7 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="Sniper" parent="Enemies" instance=ExtResource("4_o1l71")]
 position = Vector2(-95, -233)
+
+[node name="BaseCharacter2" parent="." instance=ExtResource("4_2e4nm")]
+position = Vector2(489, 144)
+scale = Vector2(-1.09401, 0.747053)

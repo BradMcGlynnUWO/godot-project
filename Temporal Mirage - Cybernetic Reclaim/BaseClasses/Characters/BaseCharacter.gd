@@ -10,6 +10,7 @@ func _ready():
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	print(health)
 	if health <= 0:
 		die()
 
