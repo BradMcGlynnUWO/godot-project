@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://splg6rpaag22"]
+
+[ext_resource type="Script" path="res://Enemies/Melee/Brute.gd" id="1_iudeu"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_a5ep5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dqqh"]
+size = Vector2(66, 101)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58v24"]
+radius = 311.122
+
+[node name="Brute" type="CharacterBody2D"]
+script = ExtResource("1_iudeu")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4dqqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a5ep5")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-3, 0)
+shape = SubResource("CircleShape2D_58v24")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
