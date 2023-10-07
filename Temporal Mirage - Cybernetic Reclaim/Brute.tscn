@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3avse388tq2o"]
+
+[ext_resource type="Script" path="res://Enemies/Melee/Brute.gd" id="1_iudeu"]
+
+[node name="Brute" type="CharacterBody2D"]
+script = ExtResource("1_iudeu")
