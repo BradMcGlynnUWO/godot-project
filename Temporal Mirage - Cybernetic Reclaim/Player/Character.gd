@@ -28,6 +28,9 @@ func _process(delta):
 		direction.y -= 1
 	
 	move(direction, delta) # Pass delta to the move function
+	
+	if direction.x == 0 and direction.y == 0:
+		anim.play("idle-blue")
 
 	if Input.is_action_pressed('ui_select') and can_shoot:
 		shoot()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://p25d0y06ir23"]
+[gd_scene load_steps=23 format=3 uid="uid://p25d0y06ir23"]
 
 [ext_resource type="Script" path="res://Player/Character.gd" id="1_5yn6c"]
 [ext_resource type="Texture2D" uid="uid://basfkviqdkrm6" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile012.png" id="2_spttm"]
@@ -19,6 +19,14 @@ size = Vector2(90.8482, 89.3508)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avq8n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7w2aq")
+}],
+"loop": true,
+"name": &"idle-blue",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_spttm")
@@ -76,9 +84,51 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_gjw4j"]
-resource_name = "walk-right-blue"
-length = 0.4
+[sub_resource type="Animation" id="Animation_pbdk0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nsxyh"]
+resource_name = "idle-blue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ejkim"]
+resource_name = "walk-away-blue"
+length = 0.35
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"walk-right-blue"]
+"values": [&"walk-away-blue"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -134,6 +184,35 @@ tracks/1/keys = {
 "values": [0, 1, 2, 1]
 }
 
+[sub_resource type="Animation" id="Animation_gjw4j"]
+resource_name = "walk-right-blue"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-right-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
 [sub_resource type="Animation" id="Animation_4fxsx"]
 resource_name = "walk-towards-blue"
 length = 0.35
@@ -163,53 +242,10 @@ tracks/1/keys = {
 "values": [0, 1, 2, 1]
 }
 
-[sub_resource type="Animation" id="Animation_ejkim"]
-resource_name = "walk-away-blue"
-length = 0.35
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk-away-blue"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 1]
-}
-
-[sub_resource type="Animation" id="Animation_pbdk0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_veh1f"]
 _data = {
 "RESET": SubResource("Animation_pbdk0"),
+"idle-blue": SubResource("Animation_nsxyh"),
 "walk-away-blue": SubResource("Animation_ejkim"),
 "walk-left-blue": SubResource("Animation_mfm0n"),
 "walk-right-blue": SubResource("Animation_gjw4j"),
@@ -227,8 +263,7 @@ shape = SubResource("RectangleShape2D_qx4y3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.917629, 0.946264)
 sprite_frames = SubResource("SpriteFrames_avq8n")
-animation = &"walk-right-blue"
-frame = 1
+animation = &"idle-blue"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

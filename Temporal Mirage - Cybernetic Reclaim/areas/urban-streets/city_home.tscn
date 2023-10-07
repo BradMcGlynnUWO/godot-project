@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://db3ofrxx6v1tx"]
+[gd_scene load_steps=26 format=3 uid="uid://db3ofrxx6v1tx"]
 
 [ext_resource type="Texture2D" uid="uid://bmkxrwdikbrim" path="res://assets/area-assets/urban-street-assets/area-constituents/tile2.png" id="1_gt1nx"]
 [ext_resource type="Texture2D" uid="uid://cyr7t7cfvkrrw" path="res://assets/area-assets/urban-street-assets/area-constituents/tile1.png" id="2_8ocyn"]
@@ -20,9 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://b3itdivikhnvq" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-window.png" id="18_1c5et"]
 [ext_resource type="Texture2D" uid="uid://b8146dxx7whud" path="res://assets/area-assets/urban-street-assets/area-constituents/wall-with-appliance2.png" id="19_jqv2k"]
 [ext_resource type="Texture2D" uid="uid://bhamkig6uuvbp" path="res://assets/area-assets/urban-street-assets/props-and-items/vending-machine.png" id="20_xrv5p"]
+[ext_resource type="Texture2D" uid="uid://c7ehkowib82v5" path="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall2.png" id="21_2xxl6"]
 [ext_resource type="Texture2D" uid="uid://dljvs7l3vmy8h" path="res://assets/area-assets/urban-street-assets/area-constituents/stairs-right.png" id="21_kicng"]
 [ext_resource type="Texture2D" uid="uid://bhga1s6yh4m40" path="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall3.png" id="22_dx1lq"]
 [ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="23_u5v2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f171y"]
+size = Vector2(20, 184)
 
 [node name="city-home" type="Node2D"]
 
@@ -191,6 +195,43 @@ texture = ExtResource("9_2l1rl")
 position = Vector2(233, 251)
 texture = ExtResource("6_r2shs")
 
+[node name="floor-middle--bottom-separator" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Alleyway-wall3" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(317, 336.375)
+scale = Vector2(0.962121, 0.776042)
+texture = ExtResource("22_dx1lq")
+
+[node name="Green-shade1" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(325.5, 347)
+scale = Vector2(0.9375, 1)
+texture = ExtResource("16_0uh6a")
+
+[node name="Alleyway-wall5" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(302, 360.75)
+scale = Vector2(1, 0.427084)
+texture = ExtResource("22_dx1lq")
+
+[node name="Stairs-down" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(325.5, 363)
+scale = Vector2(0.312501, 1)
+texture = ExtResource("6_r2shs")
+
+[node name="Stairs-right" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(303, 338.5)
+scale = Vector2(1, 1.03125)
+texture = ExtResource("21_kicng")
+
+[node name="Alleyway-wall2" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(248, 342.906)
+scale = Vector2(1.58333, 0.897607)
+texture = ExtResource("21_2xxl6")
+
+[node name="Alleyway-wall4" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
+position = Vector2(176.5, 343)
+scale = Vector2(1.39583, 0.893616)
+texture = ExtResource("21_2xxl6")
+
 [node name="floor-middle" type="ParallaxLayer" parent="city-scape"]
 
 [node name="Big-tile5" type="Sprite2D" parent="city-scape/floor-middle"]
@@ -259,18 +300,228 @@ texture = ExtResource("5_n3s0d")
 position = Vector2(230, 267)
 texture = ExtResource("1_gt1nx")
 
-[node name="floor-middle--bottom-separator" type="ParallaxLayer" parent="city-scape"]
+[node name="Big-tile20" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(604.5, 307)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
 
-[node name="Stairs-right" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
-position = Vector2(303, 338)
-texture = ExtResource("21_kicng")
+[node name="Big-tile21" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(604, 275)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
 
-[node name="Alleyway-wall3" type="Sprite2D" parent="city-scape/floor-middle--bottom-separator"]
-position = Vector2(270.125, 346)
-scale = Vector2(0.962121, 1)
-texture = ExtResource("22_dx1lq")
+[node name="Big-tile22" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(572, 275)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile23" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(540, 275)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile24" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(508, 306.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile25" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(476, 306.5)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile26" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(572.5, 307)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Tile25" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(548.5, 315)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile26" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(532.5, 315)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile27" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(579.5, 315)
+rotation = 3.14159
+texture = ExtResource("5_n3s0d")
+
+[node name="Big-tile27" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(508, 275.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile28" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(476, 275.5)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Tile28" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(469, 267.5)
+texture = ExtResource("10_c8tew")
+
+[node name="Tile29" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(532.5, 299)
+rotation = 3.14159
+texture = ExtResource("5_n3s0d")
+
+[node name="Tile30" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(548.5, 299)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Big-tile29" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(528, 360)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile30" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(528, 391)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile31" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(496, 391)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile32" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(464, 391)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile33" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(432, 391)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile34" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(400, 391)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile35" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(496, 360)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Tile31" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(472, 368)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile32" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(456, 368)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile33" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(521, 398.5)
+rotation = 3.14159
+texture = ExtResource("5_n3s0d")
+
+[node name="Big-tile36" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(432, 360)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile37" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(400, 360)
+rotation = 3.14159
+texture = ExtResource("8_pbtse")
+
+[node name="Tile34" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(456, 352.5)
+rotation = 3.14159
+texture = ExtResource("10_c8tew")
+
+[node name="Tile35" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(393, 398.5)
+rotation = 3.14159
+texture = ExtResource("5_n3s0d")
+
+[node name="Tile36" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(472, 352)
+rotation = 3.14159
+texture = ExtResource("1_gt1nx")
+
+[node name="Big-tile11" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(445, 275.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile12" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(445, 306.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile13" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(413, 306.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile14" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(381, 306.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile15" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(349, 306.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile16" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(317, 306.5)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile17" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(413, 275.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Tile19" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(420, 314)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile20" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(373, 283.5)
+texture = ExtResource("1_gt1nx")
+
+[node name="Tile21" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(389, 283)
+texture = ExtResource("5_n3s0d")
+
+[node name="Big-tile18" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(349, 275.5)
+texture = ExtResource("8_pbtse")
+
+[node name="Big-tile19" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(317, 275.5)
+rotation = 1.5708
+texture = ExtResource("8_pbtse")
+
+[node name="Tile22" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(356, 314)
+texture = ExtResource("10_c8tew")
+
+[node name="Tile23" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(373, 267.5)
+texture = ExtResource("5_n3s0d")
+
+[node name="Tile24" type="Sprite2D" parent="city-scape/floor-middle"]
+position = Vector2(389, 267.5)
+texture = ExtResource("1_gt1nx")
+
+[node name="floor-bottom" type="ParallaxLayer" parent="city-scape"]
+
+[node name="Big-tile1" type="Sprite2D" parent="city-scape/floor-bottom"]
+position = Vector2(317, 387)
+texture = ExtResource("8_pbtse")
 
 [node name="BaseCharacter" parent="." instance=ExtResource("23_u5v2p")]
-position = Vector2(408, 229)
+position = Vector2(306, 226)
 
 [node name="Bullets" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(152, 164)
+shape = SubResource("RectangleShape2D_f171y")
