@@ -255,9 +255,8 @@ _data = {
 [node name="BaseCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_5yn6c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0.5)
-scale = Vector2(0.220147, 0.271046)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_qx4y3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -6,4 +6,9 @@ func _ready():
 	damage = 20 # Example damage value
 	fire_rate = 10.0 # High fire rate, adjust as needed
 	weapon_range = 300.0 # Example range value
-	bullet_speed = 600.0 # Example bullet speed value
+	bullet_speed = 1000.0 # Example bullet speed value
+	# Magazine and reload variables
+	magazine_size = 30 # Default to a medium value
+	bullets_left = magazine_size
+	reload_time = 2.0 # Default reload time
+	

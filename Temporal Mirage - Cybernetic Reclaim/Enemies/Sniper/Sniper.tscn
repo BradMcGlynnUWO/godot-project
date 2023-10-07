@@ -20,7 +20,7 @@ texture = ExtResource("2_4oeg8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_m4cd8")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(0, -2.25)
 shape = SubResource("RectangleShape2D_41h0k")
 

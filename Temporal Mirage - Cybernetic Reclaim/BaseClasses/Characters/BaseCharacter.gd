@@ -10,6 +10,7 @@ func _ready():
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	print(health)
 	if health <= 0:
 		die()
 
@@ -18,4 +19,6 @@ func die() -> void:
 
 func move(direction: Vector2, delta: float) -> void:
 	global_position += direction.normalized() * movement_speed * delta
-
+	
+func get_is_shield_active() -> bool:
+	return false

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_wsts2"]
 [ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="4_2e4nm"]
 [ext_resource type="PackedScene" uid="uid://cex78v1g285th" path="res://Enemies/Sniper/Sniper.tscn" id="4_o1l71"]
+[ext_resource type="PackedScene" uid="uid://splg6rpaag22" path="res://Enemies/Melee/Brute.tscn" id="5_hxp0u"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_wsts2")
