@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cc2vbp417emxg" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile011.png" id="13_j2ywv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx4y3"]
-size = Vector2(90.8482, 89.3508)
+size = Vector2(12, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avq8n"]
 animations = [{
@@ -256,7 +256,7 @@ _data = {
 script = ExtResource("1_5yn6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(0, 2.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qx4y3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

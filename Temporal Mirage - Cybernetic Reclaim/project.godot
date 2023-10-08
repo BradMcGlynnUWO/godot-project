@@ -71,6 +71,16 @@ shi={
 "events": []
 }
 
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_render/layer_2="Enemy"
+2d_render/layer_3="Bullet"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Bullet"
+2d_physics/layer_4="boundary"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
