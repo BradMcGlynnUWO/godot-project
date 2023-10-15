@@ -39,7 +39,6 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			var offset = 150
 			bullet_instance.global_position = character.global_position + direction * offset
 			
-			# Add collision exception
 			bullet_instance.setup(direction, bullet_speed, damage, weapon_range)
 			if bullet_instance == null:
 				printerr("Bullet instance is null after setup!")

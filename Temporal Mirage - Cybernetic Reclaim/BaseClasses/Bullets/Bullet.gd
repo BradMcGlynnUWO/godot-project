@@ -3,7 +3,7 @@ extends Area2D
 var speed: float = 700.0
 var damage: int = 10
 var direction: Vector2 = Vector2.ZERO
-var weapon_range: float = 100
+var weapon_range: float = 100.0
 
 var initial_position: Vector2
 

@@ -19,6 +19,20 @@ var dash_speed_multiplier: float = 9.0
 var dash_cooldown: float = 2.0
 var dash_timer: Timer
 
+# Grenade variables
+var grenade_scene = preload("res://BaseClasses/Grenades/Grenade.tscn")
+var grenade_speed: float = 300.0 # Speed at which the grenade is thrown
+var grenade_distance: float = 600.0
+var grenade_damage: int = 30
+var grenades: int = 5 # Current number of grenades
+var max_grenades: int = 5 # Maximum number of grenades
+var grenade_cooldown: float = 3.0 # Cooldown between each throw
+var grenade_reload_time: float = 5.0 # Time to reload grenades
+
+var grenade_cooldown_timer: Timer
+var grenade_reload_timer: Timer
+
+
 func _ready():
 	health = 100
 	movement_speed = 30.0
@@ -45,6 +59,18 @@ func _ready():
 	dash_timer.wait_time = dash_cooldown
 	dash_timer.one_shot = true
 	add_child(dash_timer)
+
+	# Initialize grenade timers
+	grenade_cooldown_timer = Timer.new()
+	grenade_cooldown_timer.wait_time = grenade_cooldown
+	grenade_cooldown_timer.one_shot = true
+	add_child(grenade_cooldown_timer)
+
+	grenade_reload_timer = Timer.new()
+	grenade_reload_timer.wait_time = grenade_reload_time
+	grenade_reload_timer.one_shot = true
+	grenade_reload_timer.connect("timeout", Callable(self, "reload_grenades"))
+	add_child(grenade_reload_timer)
 
 func _process(delta):
 	var direction = Vector2.ZERO
@@ -73,6 +99,10 @@ func _process(delta):
 	# Predictive Echo / Dash activation
 	if Input.is_action_just_pressed('dash') and dash_timer.is_stopped():
 		dash(direction)
+
+	# Grenade throw activation
+	if Input.is_action_just_pressed('ui_throw_grenade') and grenades > 0 and grenade_cooldown_timer.is_stopped():
+		throw_grenade()
 		
 
 func shoot():
@@ -114,3 +144,29 @@ func dash(direction: Vector2):
 
 func get_is_shield_active() -> bool:
 	return is_shield_active
+
+func throw_grenade():
+	grenades -= 1
+	if grenade_scene:
+		var grenade_instance = grenade_scene.instantiate()
+		if grenade_instance:
+			var direction = (get_global_mouse_position() - global_position).normalized()
+			var offset = 150
+			
+			grenade_instance.global_position = global_position + direction * offset
+			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance)
+			get_tree().get_root().get_node("main/Grenades").add_child(grenade_instance)
+	else:
+		printerr("Grenade scene is null!")
+
+	
+
+	# Start the cooldown timer
+	grenade_cooldown_timer.start()
+
+	# If out of grenades, start the reload timer
+	if grenades <= 0:
+		grenade_reload_timer.start()
+
+func reload_grenades():
+	grenades = max_grenades
