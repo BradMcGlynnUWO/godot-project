@@ -19,3 +19,10 @@ func die() -> void:
 
 func move(direction: Vector2, delta: float) -> void:
 	global_position += direction.normalized() * movement_speed * delta
+	
+func get_is_shield_active() -> bool:
+	return false
+
+func apply_knockback(direction: Vector2, magnitude: float):
+	global_position += direction * magnitude
+
