@@ -22,3 +22,7 @@ func move(direction: Vector2, delta: float) -> void:
 	
 func get_is_shield_active() -> bool:
 	return false
+
+func apply_knockback(direction: Vector2, magnitude: float):
+	global_position += direction * magnitude
+

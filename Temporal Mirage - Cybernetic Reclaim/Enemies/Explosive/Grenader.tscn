@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://udm1tc353cn7"]
+
+[ext_resource type="Script" path="res://Enemies/Explosive/Grenader.gd" id="1_01u82"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_3p3pi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tti7"]
+radius = 407.836
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fkmp"]
+size = Vector2(60, 46)
+
+[node name="Grenader" type="CharacterBody2D"]
+script = ExtResource("1_01u82")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(24, 14)
+shape = SubResource("CircleShape2D_7tti7")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(20, 13)
+shape = SubResource("RectangleShape2D_1fkmp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, 13)
+scale = Vector2(0.539063, 0.40625)
+texture = ExtResource("2_3p3pi")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
