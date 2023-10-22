@@ -38,7 +38,7 @@ var grenade_reload_timer: Timer
 func _ready():
 	health = 100
 	movement_speed = 100
-	set_motion_mode(1)   # default motion mod eis for platformers, this mode is for top down's
+	set_motion_mode(1)   # default motion mode is for platformers, this mode is for top down's
 	var gun_instance = MachineGun.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
@@ -75,7 +75,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	# move_and_collide() uses this velocity to mvoe the character
+	# move_and_slide() uses this velocity to mvoe the character
 	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
 	move_and_slide()
 	
@@ -136,9 +136,8 @@ func deactivate_shield():
 	# Here, you can revert any visual or gameplay effects related to the shield
 
 func dash(direction: Vector2):
-	pass
-	#global_position += direction.normalized() * movement_speed * dash_speed_multiplier
-	#dash_timer.start()
+	global_position += direction.normalized() * movement_speed * dash_speed_multiplier
+	dash_timer.start()
 
 func get_is_shield_active() -> bool:
 	return is_shield_active
