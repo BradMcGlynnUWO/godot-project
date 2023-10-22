@@ -152,7 +152,8 @@ func throw_grenade():
 			
 			grenade_instance.global_position = global_position + direction * offset
 			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance)
-			get_tree().get_root().get_node("main/Grenades").add_child(grenade_instance)
+			var character_parent = get_parent()
+			character_parent.get_node("./../Grenades").add_child(grenade_instance)
 	else:
 		printerr("Grenade scene is null!")
 

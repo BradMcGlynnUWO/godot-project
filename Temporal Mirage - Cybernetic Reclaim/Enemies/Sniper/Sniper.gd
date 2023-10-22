@@ -32,7 +32,8 @@ func _process(delta):
 	if target:
 		var direction_to_target = target.global_position - global_position
 		if direction_to_target.length() < detection_radius:
-			move(-direction_to_target.normalized(), delta)
+			velocity = -direction_to_target.normalized() * movement_speed
+			move_and_slide()
 			weapon_slot.use_weapon(self, target.global_position)
 			print("Target Position: ", target.global_position)
 		else:

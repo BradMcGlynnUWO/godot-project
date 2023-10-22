@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0k22hpw54m8q"]
+[gd_scene load_steps=14 format=3 uid="uid://b0k22hpw54m8q"]
 
 [ext_resource type="Texture2D" uid="uid://cem5dumabxyfn" path="res://assets/area-assets/urban-street-assets/neo_zero_tiles_and_buildings_01.png" id="1_3tkot"]
 [ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="2_s2vpi"]
 [ext_resource type="Texture2D" uid="uid://bmnni0275a7oq" path="res://assets/area-assets/urban-street-assets/area-constituents/roof1.png" id="2_wrnyr"]
 [ext_resource type="Texture2D" uid="uid://dbmm8hebl04ec" path="res://assets/area-assets/urban-street-assets/area-constituents/green-shade1.png" id="3_wgi1t"]
 [ext_resource type="Texture2D" uid="uid://u7q8ku2v2abv" path="res://assets/area-assets/urban-street-assets/neo_zero_props_and_items_01.png" id="4_6gfb1"]
+[ext_resource type="Script" path="res://areas/urban-streets/city_start.gd" id="5_m7ib4"]
+[ext_resource type="PackedScene" uid="uid://cex78v1g285th" path="res://Enemies/Sniper/Sniper.tscn" id="6_iwyxm"]
+[ext_resource type="PackedScene" uid="uid://udm1tc353cn7" path="res://Enemies/Explosive/Grenader.tscn" id="8_bhpyk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6q3un"]
 texture = ExtResource("1_3tkot")
@@ -558,7 +561,20 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-655370, 720896, 1, -589834, 720896, 1, -524298, 720896, 1, -458762, 720896, 1, -393226, 720896, 1, -327690, 720896, 1, -262154, 720896, 1, -196618, 720896, 1, -131082, 720896, 1, -65546, 720896, 1, -10, 720896, 1, 65526, 720896, 1, 131062, 720896, 1, 196598, 720896, 1, 262134, 720896, 1, 327670, 720896, 1, 393206, 720896, 1, 458742, 720896, 1, 524278, 720896, 1, 589814, 720896, 1, 655350, 720896, 1)
-
-[node name="BaseCharacter" parent="." instance=ExtResource("2_s2vpi")]
+script = ExtResource("5_m7ib4")
 
 [node name="Bullets" type="Node2D" parent="."]
+
+[node name="Grenades" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="." groups=["enemies"]]
+
+[node name="Sniper" parent="Enemies" instance=ExtResource("6_iwyxm")]
+position = Vector2(782, -45)
+
+[node name="Grenader" parent="Enemies" groups=["enemies"] instance=ExtResource("8_bhpyk")]
+position = Vector2(426, -103)
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="BaseCharacter" parent="Player" instance=ExtResource("2_s2vpi")]

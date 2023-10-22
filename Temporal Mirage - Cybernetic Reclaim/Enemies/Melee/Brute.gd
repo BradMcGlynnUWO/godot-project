@@ -38,7 +38,8 @@ func _process(delta):
 		if direction_to_target.length() < melee_attack_range and not is_attacking:
 			attack(target)
 		elif direction_to_target.length() < detection_radius:
-			move(direction_to_target.normalized(), delta)
+			velocity = direction_to_target.normalized() * movement_speed
+			move_and_slide()
 
 func attack(target: Node2D) -> void:
 	is_attacking = true
