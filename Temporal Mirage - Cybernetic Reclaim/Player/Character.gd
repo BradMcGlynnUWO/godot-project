@@ -38,7 +38,7 @@ var grenade_reload_timer: Timer
 func _ready():
 	health = 100
 	movement_speed = 100
-	set_motion_mode(1)
+	set_motion_mode(1)   # default motion mod eis for platformers, this mode is for top down's
 	var gun_instance = MachineGun.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
