@@ -85,6 +85,7 @@ ui_throw_grenade={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Bullet"
 2d_physics/layer_4="boundary"
+2d_physics/layer_5="floor"
 
 [rendering]
 

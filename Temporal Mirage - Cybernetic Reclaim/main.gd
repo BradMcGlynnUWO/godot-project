@@ -5,4 +5,4 @@ func _process(_delta):
 		get_tree().quit()
 
 func _on_playbutton_pressed():
-	get_tree().change_scene_to_file("res://areas/urban-streets/city_home.tscn")
+	get_tree().change_scene_to_file("res://areas/urban-streets/city_start.tscn")

@@ -43,10 +43,9 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			if bullet_instance == null:
 				printerr("Bullet instance is null after setup!")
 				return
-		
-			
-			# might want to make this a more global variable if we start to need it in multiple places
+				
 			var character_parent = character.get_parent()
+			print(character_parent)
 			character_parent.get_node("./Bullets").add_child(bullet_instance)
 			
 			can_shoot = false

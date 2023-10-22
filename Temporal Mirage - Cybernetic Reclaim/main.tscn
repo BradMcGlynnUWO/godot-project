@@ -1,26 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtaeuhgpkcy1f"]
+[gd_scene load_steps=2 format=3 uid="uid://dtaeuhgpkcy1f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_wsts2"]
-[ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="4_2e4nm"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_wsts2")
 
-[node name="BaseCharacter" parent="." instance=ExtResource("4_2e4nm")]
-position = Vector2(988, 273)
-scale = Vector2(0.442622, 0.602148)
-
-[node name="Camera2D2" type="Camera2D" parent="BaseCharacter"]
-position = Vector2(-526.408, -69.7503)
-zoom = Vector2(0.3, 0.3)
-
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies"]]
-
-[node name="Sniper" parent="Enemies" instance=ExtResource("4_o1l71")]
-position = Vector2(110, 233)
-position = Vector2(-384, -383)
 
 [node name="Bullets" type="Node2D" parent="Enemies"]
 

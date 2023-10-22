@@ -3,9 +3,6 @@ extends BaseCharacter
 var can_shoot: bool = true
 
 @onready var anim = get_node("AnimationPlayer")
-var DELTA: float = 0
-var player_out_of_bounds: bool = false
-var out_of_bounds_speed_reduction: float = 0.1
 
 # Bullet Time variables
 var is_time_slow_active: bool = false
@@ -40,12 +37,11 @@ var grenade_reload_timer: Timer
 
 func _ready():
 	health = 100
-	movement_speed = 10.0
+	movement_speed = 100
+	set_motion_mode(1)
 	var gun_instance = MachineGun.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
-	collision_layer = 1 << 0 #why?
-	collision_mask = 1 << 2 # also why?
 	
 	# Initialize timers
 	bullet_time_timer = Timer.new()
@@ -76,14 +72,12 @@ func _ready():
 	grenade_reload_timer.one_shot = true
 	grenade_reload_timer.connect("timeout", Callable(self, "reload_grenades"))
 	add_child(grenade_reload_timer)
+	
 
 func _physics_process(delta):
-	var velocity = _get_velocity_from_key_in()
-	
-	if player_out_of_bounds:
-		move(velocity, delta * time_multiplier * movement_speed * out_of_bounds_speed_reduction)
-	else:
-		move(velocity, delta * time_multiplier * movement_speed)
+	# move_and_collide() uses this velocity to mvoe the character
+	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
+	move_and_slide()
 	
 	if velocity.x == 0 and velocity.y == 0:
 		anim.play("idle-blue")
@@ -142,8 +136,9 @@ func deactivate_shield():
 	# Here, you can revert any visual or gameplay effects related to the shield
 
 func dash(direction: Vector2):
-	global_position += direction.normalized() * movement_speed * dash_speed_multiplier
-	dash_timer.start()
+	pass
+	#global_position += direction.normalized() * movement_speed * dash_speed_multiplier
+	#dash_timer.start()
 
 func get_is_shield_active() -> bool:
 	return is_shield_active
@@ -162,8 +157,6 @@ func throw_grenade():
 	else:
 		printerr("Grenade scene is null!")
 
-	
-
 	# Start the cooldown timer
 	grenade_cooldown_timer.start()
 
@@ -175,25 +168,18 @@ func reload_grenades():
 	grenades = max_grenades
 	
 func _get_velocity_from_key_in():
-	#TODO separate setting of animation to separate class
-	var velocity = Vector2.ZERO
+	#TODO separate setting of animation to separate class?
+	var vel = Vector2.ZERO
 	if Input.is_action_pressed('ui_right'):
 		anim.play("walk-right-blue")
-		velocity.x += 1
+		vel.x += 1
 	if Input.is_action_pressed('ui_left'):
 		anim.play("walk-left-blue")
-		velocity.x -= 1
+		vel.x -= 1
 	if Input.is_action_pressed('ui_down'):
 		anim.play("walk-towards-blue")
-		velocity.y += 1
+		vel.y += 1
 	if Input.is_action_pressed('ui_up'):
 		anim.play("walk-away-blue")
-		velocity.y -= 1
-	return velocity
-
-func _on_area_2d_body_entered(body):
-	print("enetered")
-	player_out_of_bounds = true
-
-func _on_area_2d_body_exited(body):
-	player_out_of_bounds = false
+		vel.y -= 1
+	return vel
