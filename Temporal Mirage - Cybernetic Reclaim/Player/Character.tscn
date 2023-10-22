@@ -1,17 +1,273 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpcm8geih7cme"]
+[gd_scene load_steps=23 format=3 uid="uid://p25d0y06ir23"]
 
 [ext_resource type="Script" path="res://Player/Character.gd" id="1_5yn6c"]
-[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_y8gkk"]
+[ext_resource type="Texture2D" uid="uid://basfkviqdkrm6" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile012.png" id="2_spttm"]
+[ext_resource type="Texture2D" uid="uid://by6ogum4k4ivi" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile013.png" id="3_lmrst"]
+[ext_resource type="Texture2D" uid="uid://cnget2js4ixu7" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile014.png" id="4_p0tcn"]
+[ext_resource type="Texture2D" uid="uid://dq7jrtguswrix" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile018.png" id="5_gkt4m"]
+[ext_resource type="Texture2D" uid="uid://dul43pdpfpomd" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile019.png" id="6_lmhn4"]
+[ext_resource type="Texture2D" uid="uid://bon5vvgbm2dce" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile020.png" id="7_34d6i"]
+[ext_resource type="Texture2D" uid="uid://cvav8cn6x7hfg" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile015.png" id="8_xhii8"]
+[ext_resource type="Texture2D" uid="uid://bm5ttq3s6j8vq" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile016.png" id="9_s7ww5"]
+[ext_resource type="Texture2D" uid="uid://qajub5diqlll" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile017.png" id="10_86quf"]
+[ext_resource type="Texture2D" uid="uid://cvbp4ppm5ns6w" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile009.png" id="11_c1sm6"]
+[ext_resource type="Texture2D" uid="uid://daasdwwbepsil" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile010.png" id="12_7w2aq"]
+[ext_resource type="Texture2D" uid="uid://cc2vbp417emxg" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile011.png" id="13_j2ywv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx4y3"]
-size = Vector2(122, 121)
+size = Vector2(12, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avq8n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7w2aq")
+}],
+"loop": true,
+"name": &"idle-blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_spttm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lmrst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p0tcn")
+}],
+"loop": true,
+"name": &"walk-away-blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gkt4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lmhn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_34d6i")
+}],
+"loop": true,
+"name": &"walk-left-blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xhii8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s7ww5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_86quf")
+}],
+"loop": true,
+"name": &"walk-right-blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_c1sm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7w2aq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j2ywv")
+}],
+"loop": true,
+"name": &"walk-towards-blue",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pbdk0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nsxyh"]
+resource_name = "idle-blue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ejkim"]
+resource_name = "walk-away-blue"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-away-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_mfm0n"]
+resource_name = "walk-left-blue"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-left-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_gjw4j"]
+resource_name = "walk-right-blue"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-right-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_4fxsx"]
+resource_name = "walk-towards-blue"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-towards-blue"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_veh1f"]
+_data = {
+"RESET": SubResource("Animation_pbdk0"),
+"idle-blue": SubResource("Animation_nsxyh"),
+"walk-away-blue": SubResource("Animation_ejkim"),
+"walk-left-blue": SubResource("Animation_mfm0n"),
+"walk-right-blue": SubResource("Animation_gjw4j"),
+"walk-towards-blue": SubResource("Animation_4fxsx")
+}
 
 [node name="BaseCharacter" type="CharacterBody2D" groups=["player"]]
+collision_mask = 8
 script = ExtResource("1_5yn6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(0, 2.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qx4y3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_y8gkk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.917629, 0.946264)
+sprite_frames = SubResource("SpriteFrames_avq8n")
+animation = &"idle-blue"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_veh1f")
+}

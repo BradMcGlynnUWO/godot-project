@@ -35,7 +35,8 @@ func _process(delta):
 		if direction_to_target.length() < detection_radius:
 			# Calculate the midpoint between the Grenadier and the target based on the GrenadeLauncher's range
 			var midpoint = global_position + direction_to_target.normalized() * (weapon_slot.weapon_range / 2)
-			move((midpoint - global_position).normalized(), delta)
+			velocity = (midpoint - global_position).normalized() * movement_speed
+			move_and_slide()
 			weapon_slot.use_weapon(self, target.global_position)
 			print("Target Position: ", target.global_position)
 		else:

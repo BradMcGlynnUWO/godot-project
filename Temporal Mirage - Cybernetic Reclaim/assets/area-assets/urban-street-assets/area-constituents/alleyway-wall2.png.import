@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di6jjru01yalk"
-path="res://.godot/imported/neo_zero_char_01.png-77b691fcb95ffed4bf3964c39aae26d5.ctex"
+uid="uid://c7ehkowib82v5"
+path="res://.godot/imported/alleyway-wall2.png-5d05499fcfc1b23673f06c5a1105f6ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder-assets/neo_zero_char_01.png"
-dest_files=["res://.godot/imported/neo_zero_char_01.png-77b691fcb95ffed4bf3964c39aae26d5.ctex"]
+source_file="res://assets/area-assets/urban-street-assets/area-constituents/alleyway-wall2.png"
+dest_files=["res://.godot/imported/alleyway-wall2.png-5d05499fcfc1b23673f06c5a1105f6ba.ctex"]
 
 [params]
 
