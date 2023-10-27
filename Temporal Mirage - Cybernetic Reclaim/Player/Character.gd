@@ -1,8 +1,13 @@
 extends BaseCharacter
 
 var can_shoot: bool = true
+var max_health = 100
 
 @onready var anim = get_node("AnimationPlayer")
+@onready var ammo_display = get_parent().get_node("./../CanvasLayer/AmmoDisplay")
+@onready var grenade_display = get_parent().get_node("./../CanvasLayer/GrenadeDisplay")
+@onready var health_display = get_parent().get_node("./../CanvasLayer/HealthRemaining")
+
 
 # Bullet Time variables
 var is_time_slow_active: bool = false
@@ -75,6 +80,9 @@ func _ready():
 	
 
 func _physics_process(delta):
+	update_health_display()
+	update_ammo_display()
+	update_grenade_display()
 	# move_and_slide() uses this velocity to mvoe the character
 	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
 	move_and_slide()
@@ -109,6 +117,7 @@ func shoot():
 	var timer = get_tree().create_timer(1.0 / weapon_slot.fire_rate)
 	await timer.timeout
 	can_shoot = true
+	update_ammo_display()
 
 func activate_time_slow():
 	print("Time slow activated")
@@ -159,14 +168,31 @@ func throw_grenade():
 
 	# Start the cooldown timer
 	grenade_cooldown_timer.start()
+	update_grenade_display()
 
-	# If out of grenades, start the reload timer
-	if grenades <= 0:
-		grenade_reload_timer.start()
 
 func reload_grenades():
+	grenade_reload_timer.start()
 	grenades = max_grenades
+	update_grenade_display()
 	
+func update_ammo_display():
+	print(ammo_display)
+	if ammo_display and ammo_display is Label:
+		ammo_display.text = "Ammo: %d/%d, Bullets Remaining: %d" % [weapon_slot.bullets_left, weapon_slot.magazine_size, weapon_slot.max_bullets]
+
+func refill_weapon():
+	weapon_slot.max_bullets = weapon_slot.magazine_size * 10
+
+func update_grenade_display():
+	print(grenade_display)
+	grenade_display.text = "Grenades: %d/%d" % [grenades, max_grenades]
+
+func update_health_display():
+	print(health_display)
+	health_display.text = "Health: %d" % [health]
+
+
 func _get_velocity_from_key_in():
 	#TODO separate setting of animation to separate class?
 	var vel = Vector2.ZERO

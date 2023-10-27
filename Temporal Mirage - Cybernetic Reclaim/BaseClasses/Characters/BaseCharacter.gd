@@ -14,6 +14,7 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
+
 func die() -> void:
 	queue_free() # Override this method to perform specific actions upon death.
 	
@@ -21,5 +22,25 @@ func get_is_shield_active() -> bool:
 	return false
 
 func apply_knockback(direction: Vector2, magnitude: float):
-	global_position += direction * magnitude
+	var start_position = global_position
+	var end_position = start_position + direction * magnitude
+	var tween = get_tree().create_tween()
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	#tween.tween_property(self, "global_position",start_position, 1).as_relative()
+	tween.tween_property(self, "global_position",end_position, 1)
+	await tween.finished
+	
+
+func swap_weapon(new_weapon_class: Script):
+	if new_weapon_class:
+		# Remove the current weapon
+		if weapon_slot:
+			weapon_slot.queue_free()
+		
+		# Instantiate the new weapon and assign it to the weapon slot
+		var new_weapon_instance = new_weapon_class.new()
+		add_child(new_weapon_instance)
+		weapon_slot = new_weapon_instance
+
 

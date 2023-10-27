@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtaeuhgpkcy1f"]
+[gd_scene load_steps=2 format=3 uid="uid://dtaeuhgpkcy1f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_wsts2"]
-[ext_resource type="PackedScene" uid="uid://udm1tc353cn7" path="res://Enemies/Explosive/Grenader.tscn" id="2_6hsec"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_wsts2")
@@ -18,7 +17,5 @@ offset_top = 114.0
 offset_right = 677.0
 offset_bottom = 262.0
 text = "Play"
-
-[node name="Grenader" parent="." instance=ExtResource("2_6hsec")]
 
 [connection signal="pressed" from="play-button" to="." method="_on_playbutton_pressed"]

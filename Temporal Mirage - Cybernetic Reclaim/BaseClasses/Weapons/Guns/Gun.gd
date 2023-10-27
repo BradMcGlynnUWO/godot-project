@@ -11,6 +11,7 @@ var can_shoot: bool = true
 # Magazine and reload variables
 var magazine_size: int = 12 # Default to a medium value
 var bullets_left: int = magazine_size
+var max_bullets: int = magazine_size * 12
 var reload_time: float = 2.0 # Default reload time
 var is_reloading: bool = false
 
@@ -64,14 +65,20 @@ func start_reloading(character: Node):
 	print("Reloading")
 	is_reloading = true
 	can_shoot = false
+	if character.is_in_group("player"):
+		max_bullets -= magazine_size - bullets_left
 	var reload_timer = character.get_tree().create_timer(reload_time)
 	reload_timer.connect("timeout", Callable(self, "_on_reload_complete"))
 
 func _on_reload_complete():
 	bullets_left = magazine_size
 	is_reloading = false
-	can_shoot = true
+	if max_bullets > 0:
+		can_shoot = true
 
 func _on_timer_timeout():
 	can_shoot = true # Reset can_shoot when the timer times out
 	
+	
+func refill_ammo():
+	max_bullets = magazine_size * 12
