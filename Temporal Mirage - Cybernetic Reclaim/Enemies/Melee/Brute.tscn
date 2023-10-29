@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://splg6rpaag22"]
+[gd_scene load_steps=16 format=3 uid="uid://splg6rpaag22"]
 
 [ext_resource type="Script" path="res://Enemies/Melee/Brute.gd" id="1_iudeu"]
 [ext_resource type="Texture2D" uid="uid://b7mpikqkxwyqh" path="res://assets/enemies/hitman/front/idle-look-left.png" id="2_akukl"]
@@ -6,12 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://mj4jhe7woqt5" path="res://assets/enemies/hitman/front/idle-look-right.png" id="3_rq0gm"]
 [ext_resource type="Texture2D" uid="uid://q7vumk4nuk7t" path="res://assets/enemies/hitman/walk-towards/frame1.png" id="3_s0qsy"]
 [ext_resource type="Texture2D" uid="uid://b1mb3idg4xo5n" path="res://assets/enemies/hitman/walk-towards/frame3.png" id="4_oahj0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dqqh"]
-size = Vector2(66, 101)
+[ext_resource type="PackedScene" uid="uid://o47gknhhjjsj" path="res://Enemies/Melee/health_bar.tscn" id="7_h4yhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58v24"]
-radius = 166.003
+radius = 220.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6fqov"]
 animations = [{
@@ -121,16 +119,22 @@ _data = {
 "walk-towards": SubResource("Animation_p7061")
 }
 
-[node name="Brute" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl2hr"]
+size = Vector2(38, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aon3"]
+size = Vector2(28, 63)
+
+[node name="Brute" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_iudeu")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_4dqqh")
+[node name="TargetDetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 13
 
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetectionArea"]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_58v24")
 
@@ -145,5 +149,21 @@ libraries = {
 "": SubResource("AnimationLibrary_dcnbj")
 }
 
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[node name="Health" parent="." instance=ExtResource("7_h4yhv")]
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 3.08798
+offset_bottom = 42.184
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["enemies"]]
+position = Vector2(2, -3)
+shape = SubResource("RectangleShape2D_pl2hr")
+
+[node name="BruteBody" type="CollisionShape2D" parent="."]
+position = Vector2(3, -0.5)
+shape = SubResource("RectangleShape2D_7aon3")
+
+[connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_detection_area_body_exited"]

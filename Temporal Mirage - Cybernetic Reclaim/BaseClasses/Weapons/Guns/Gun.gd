@@ -52,9 +52,6 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			var timer = character.get_tree().create_timer(1.0 / fire_rate) # Create a timer
 			timer.connect("timeout",  Callable(self, "_on_timer_timeout")) # Connect to a new method to reset can_shoot
 
-			print("Character Position: ", character.global_position)
-			print("Target Position: ", target_position)
-			print("Bullet Direction: ", direction)
 			bullets_left -= 1
 			if bullets_left <= 0:
 				start_reloading(character)
