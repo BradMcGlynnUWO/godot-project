@@ -13,6 +13,7 @@ var target: Node2D = null
 # Onready variables
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_collision_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
+@onready var anim = get_node("AnimationPlayer")
 
 
 
@@ -28,18 +29,17 @@ func _ready():
 	detection_shape.radius = detection_radius
 	detection_collision_shape.shape = detection_shape
 
-	# Connect signals
-	detection_area.connect("body_entered", Callable(self, "_on_body_entered"))
-	detection_area.connect("body_exited", Callable(self, "_on_body_exited"))
-
 func _process(delta):
 	if target:
+		anim.play("walk-towards")
 		var direction_to_target = target.global_position - global_position
 		if direction_to_target.length() < melee_attack_range and not is_attacking:
 			attack(target)
 		elif direction_to_target.length() < detection_radius:
 			velocity = direction_to_target.normalized() * movement_speed
 			move_and_slide()
+	else:
+		anim.play("idle")
 
 func attack(target: Node2D) -> void:
 	is_attacking = true
@@ -64,11 +64,11 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
-func _on_body_entered(body: Node2D):
+func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
 
 
-func _on_body_exited(body: Node2D):
+func _on_detection_area_body_exited(body):
 	if body == target:
 		target = null

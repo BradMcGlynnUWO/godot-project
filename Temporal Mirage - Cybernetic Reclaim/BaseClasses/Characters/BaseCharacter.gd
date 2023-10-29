@@ -32,7 +32,11 @@ func apply_knockback(direction: Vector2, magnitude: float):
 	await tween.finished
 	
 
-func swap_weapon(new_weapon_class: Script):
+func swap_weapon(new_weapon_class: Script) -> bool:
+	# add conditions for swapping
+	if not Input.is_key_pressed(KEY_E):
+		return false
+	
 	if new_weapon_class:
 		# Remove the current weapon
 		if weapon_slot:
@@ -42,5 +46,7 @@ func swap_weapon(new_weapon_class: Script):
 		var new_weapon_instance = new_weapon_class.new()
 		add_child(new_weapon_instance)
 		weapon_slot = new_weapon_instance
+	
+	return true
 
 

@@ -1,13 +1,125 @@
-[gd_scene load_steps=5 format=3 uid="uid://splg6rpaag22"]
+[gd_scene load_steps=14 format=3 uid="uid://splg6rpaag22"]
 
 [ext_resource type="Script" path="res://Enemies/Melee/Brute.gd" id="1_iudeu"]
-[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_a5ep5"]
+[ext_resource type="Texture2D" uid="uid://b7mpikqkxwyqh" path="res://assets/enemies/hitman/front/idle-look-left.png" id="2_akukl"]
+[ext_resource type="Texture2D" uid="uid://cicseogif4h76" path="res://assets/enemies/hitman/walk-towards/frame0.png" id="2_epdha"]
+[ext_resource type="Texture2D" uid="uid://mj4jhe7woqt5" path="res://assets/enemies/hitman/front/idle-look-right.png" id="3_rq0gm"]
+[ext_resource type="Texture2D" uid="uid://q7vumk4nuk7t" path="res://assets/enemies/hitman/walk-towards/frame1.png" id="3_s0qsy"]
+[ext_resource type="Texture2D" uid="uid://b1mb3idg4xo5n" path="res://assets/enemies/hitman/walk-towards/frame3.png" id="4_oahj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dqqh"]
 size = Vector2(66, 101)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58v24"]
-radius = 311.122
+radius = 166.003
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fqov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_akukl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rq0gm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_epdha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s0qsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oahj0")
+}],
+"loop": true,
+"name": &"walk-towards",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_hx5wq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_10hkw"]
+resource_name = "idle"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_p7061"]
+resource_name = "walk-towards"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk-towards"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcnbj"]
+_data = {
+"RESET": SubResource("Animation_hx5wq"),
+"idle": SubResource("Animation_10hkw"),
+"walk-towards": SubResource("Animation_p7061")
+}
 
 [node name="Brute" type="CharacterBody2D"]
 script = ExtResource("1_iudeu")
@@ -16,14 +128,22 @@ script = ExtResource("1_iudeu")
 position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4dqqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_a5ep5")
-
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_58v24")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_6fqov")
+animation = &"walk-towards"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dcnbj")
+}
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

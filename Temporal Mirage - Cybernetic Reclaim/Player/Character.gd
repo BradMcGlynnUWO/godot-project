@@ -78,11 +78,12 @@ func _ready():
 	grenade_reload_timer.connect("timeout", Callable(self, "reload_grenades"))
 	add_child(grenade_reload_timer)
 	
-
-func _physics_process(delta):
 	update_health_display()
 	update_ammo_display()
 	update_grenade_display()
+	
+
+func _physics_process(delta):
 	# move_and_slide() uses this velocity to mvoe the character
 	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
 	move_and_slide()
@@ -177,7 +178,6 @@ func reload_grenades():
 	update_grenade_display()
 	
 func update_ammo_display():
-	print(ammo_display)
 	if ammo_display and ammo_display is Label:
 		ammo_display.text = "Ammo: %d/%d, Bullets Remaining: %d" % [weapon_slot.bullets_left, weapon_slot.magazine_size, weapon_slot.max_bullets]
 
@@ -185,11 +185,9 @@ func refill_weapon():
 	weapon_slot.max_bullets = weapon_slot.magazine_size * 10
 
 func update_grenade_display():
-	print(grenade_display)
 	grenade_display.text = "Grenades: %d/%d" % [grenades, max_grenades]
 
 func update_health_display():
-	print(health_display)
 	health_display.text = "Health: %d" % [health]
 
 
