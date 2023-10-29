@@ -44,6 +44,8 @@ func _process(delta):
 func attack(target: Node2D) -> void:
 	is_attacking = true
 	target.take_damage(melee_damage)
+	var knockback_direction = (target.global_position - global_position).normalized()
+	target.apply_knockback(knockback_direction, 100)  # Adjust the magnitude as needed
 	# Add any visual or sound effects for the hammer swing here
 	var attack_timer = Timer.new()
 	attack_timer.wait_time = 2.0 # 1 second attack cooldown

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0k22hpw54m8q"]
+[gd_scene load_steps=20 format=3 uid="uid://b0k22hpw54m8q"]
 
 [ext_resource type="Texture2D" uid="uid://cem5dumabxyfn" path="res://assets/area-assets/urban-street-assets/neo_zero_tiles_and_buildings_01.png" id="1_3tkot"]
 [ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="2_s2vpi"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" path="res://areas/urban-streets/city_start.gd" id="5_m7ib4"]
 [ext_resource type="PackedScene" uid="uid://cex78v1g285th" path="res://Enemies/Sniper/Sniper.tscn" id="6_iwyxm"]
 [ext_resource type="PackedScene" uid="uid://udm1tc353cn7" path="res://Enemies/Explosive/Grenader.tscn" id="8_bhpyk"]
+[ext_resource type="PackedScene" uid="uid://blapti0m20jc3" path="res://BaseClasses/Drops/Scripts/WeaponDrop.tscn" id="9_hjppk"]
+[ext_resource type="Script" path="res://BaseClasses/Weapons/Guns/GrenadeLauncher.gd" id="10_lhaoq"]
+[ext_resource type="Script" path="res://BaseClasses/Weapons/Guns/SniperRifle.gd" id="11_opkia"]
+[ext_resource type="PackedScene" uid="uid://bipvtm2yd7lyk" path="res://BaseClasses/Drops/Scripts/HealthDrop.tscn" id="12_snmm5"]
+[ext_resource type="PackedScene" uid="uid://0r4u0c2i7huu" path="res://BaseClasses/Drops/Scripts/AmmoDrop.tscn" id="13_71ece"]
+[ext_resource type="PackedScene" uid="uid://rcmw025ydmw5" path="res://BaseClasses/Drops/Scripts/GrenadeDrop.tscn" id="14_wmurk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6q3un"]
 texture = ExtResource("1_3tkot")
@@ -563,6 +569,28 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-655370, 720896, 1, -589834, 720896, 1, -524298, 720896, 1, -458762, 720896, 1, -393226, 720896, 1, -327690, 720896, 1, -262154, 720896, 1, -196618, 720896, 1, -131082, 720896, 1, -65546, 720896, 1, -10, 720896, 1, 65526, 720896, 1, 131062, 720896, 1, 196598, 720896, 1, 262134, 720896, 1, 327670, 720896, 1, 393206, 720896, 1, 458742, 720896, 1, 524278, 720896, 1, 589814, 720896, 1, 655350, 720896, 1)
 script = ExtResource("5_m7ib4")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AmmoDisplay" type="Label" parent="CanvasLayer"]
+offset_left = 46.0
+offset_top = 34.0
+offset_right = 86.0
+offset_bottom = 60.0
+text = "
+"
+
+[node name="GrenadeDisplay" type="Label" parent="CanvasLayer"]
+offset_left = -67.0
+offset_top = 33.0
+offset_right = -27.0
+offset_bottom = 56.0
+text = "
+"
+
+[node name="HealthRemaining" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="Grenades" type="Node2D" parent="."]
@@ -570,11 +598,36 @@ script = ExtResource("5_m7ib4")
 [node name="Enemies" type="Node2D" parent="." groups=["enemies"]]
 
 [node name="Sniper" parent="Enemies" instance=ExtResource("6_iwyxm")]
-position = Vector2(782, -45)
+position = Vector2(945, -85)
 
 [node name="Grenader" parent="Enemies" groups=["enemies"] instance=ExtResource("8_bhpyk")]
-position = Vector2(426, -103)
+position = Vector2(425, -450)
 
 [node name="Player" type="Node2D" parent="."]
 
 [node name="BaseCharacter" parent="Player" instance=ExtResource("2_s2vpi")]
+
+[node name="Weapon Drops" type="Node" parent="."]
+
+[node name="GrenadeLauncherDrop" parent="Weapon Drops" instance=ExtResource("9_hjppk")]
+position = Vector2(-95, 453)
+weapon_class = ExtResource("10_lhaoq")
+
+[node name="SniperRifleDrop" parent="Weapon Drops" instance=ExtResource("9_hjppk")]
+position = Vector2(-344, 252)
+weapon_class = ExtResource("11_opkia")
+
+[node name="HealthDrops" type="Node" parent="."]
+
+[node name="HealthDrop" parent="HealthDrops" instance=ExtResource("12_snmm5")]
+position = Vector2(-223, -41)
+
+[node name="AmmoDrops" type="Node" parent="."]
+
+[node name="AmmoDrop" parent="AmmoDrops" instance=ExtResource("13_71ece")]
+position = Vector2(-207, 148)
+
+[node name="GrenadeDrops" type="Node" parent="."]
+
+[node name="GrenadeDrop" parent="GrenadeDrops" instance=ExtResource("14_wmurk")]
+position = Vector2(-192, 49)
