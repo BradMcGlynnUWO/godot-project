@@ -17,6 +17,7 @@ position = Vector2(0, -1.19209e-07)
 scale = Vector2(0.461914, 0.372559)
 texture = ExtResource("2_lxsdg")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player-bullets"]]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vhcla")
 
