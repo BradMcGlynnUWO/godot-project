@@ -11,35 +11,33 @@ var target: Node2D = null
 @export var detection_radius: float = 600.0
 
 # Onready variables
-@onready var detection_area: Area2D = $DetectionArea
-@onready var detection_collision_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
-
-
+@onready var detection_area: Area2D = $TargetDetectionArea
+@onready var detection_collision_shape: CollisionShape2D = $TargetDetectionArea/CollisionShape2D
+@onready var anim = get_node("AnimationPlayer")
+@onready var health_bar: ProgressBar = $Health/ProgressBar
 
 func _ready():
 	health = 300 # High health
 	movement_speed = 100.0 # Low movement speed
-	collision_layer = 1 << 1 # This sets the second bit, representing layer 2
-	collision_mask = 1 << 2  # This sets the third bit, representing layer 3 (Bullet)
 	
+	health_bar.set_value_no_signal(health)  # set health in health bar
 	
 	# Setup detection area
 	var detection_shape: CircleShape2D = CircleShape2D.new()
 	detection_shape.radius = detection_radius
 	detection_collision_shape.shape = detection_shape
 
-	# Connect signals
-	detection_area.connect("body_entered", Callable(self, "_on_body_entered"))
-	detection_area.connect("body_exited", Callable(self, "_on_body_exited"))
-
-func _process(delta):
+func _physics_process(delta):
 	if target:
+		anim.play("walk-towards")
 		var direction_to_target = target.global_position - global_position
 		if direction_to_target.length() < melee_attack_range and not is_attacking:
 			attack(target)
 		elif direction_to_target.length() < detection_radius:
 			velocity = direction_to_target.normalized() * movement_speed
 			move_and_slide()
+	else:
+		anim.play("idle")
 
 func attack(target: Node2D) -> void:
 	is_attacking = true
@@ -60,15 +58,18 @@ func _on_attack_timer_timeout():
 # Override the take_damage method to prevent knockback
 func take_damage(amount: int) -> void:
 	health -= amount
-	print(health)
+	health_bar.set_value_no_signal(health)
+	
 	if health <= 0:
 		die()
+	
+	health_bar.set_value_no_signal(health)
 
-func _on_body_entered(body: Node2D):
+func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
 
 
-func _on_body_exited(body: Node2D):
+func _on_detection_area_body_exited(body):
 	if body == target:
 		target = null

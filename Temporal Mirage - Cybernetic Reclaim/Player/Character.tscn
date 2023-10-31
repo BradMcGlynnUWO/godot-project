@@ -1,18 +1,18 @@
 [gd_scene load_steps=23 format=3 uid="uid://p25d0y06ir23"]
 
 [ext_resource type="Script" path="res://Player/Character.gd" id="1_5yn6c"]
-[ext_resource type="Texture2D" uid="uid://basfkviqdkrm6" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile012.png" id="2_spttm"]
-[ext_resource type="Texture2D" uid="uid://by6ogum4k4ivi" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile013.png" id="3_lmrst"]
-[ext_resource type="Texture2D" uid="uid://cnget2js4ixu7" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-away/tile014.png" id="4_p0tcn"]
-[ext_resource type="Texture2D" uid="uid://dq7jrtguswrix" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile018.png" id="5_gkt4m"]
-[ext_resource type="Texture2D" uid="uid://dul43pdpfpomd" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile019.png" id="6_lmhn4"]
-[ext_resource type="Texture2D" uid="uid://bon5vvgbm2dce" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-left/tile020.png" id="7_34d6i"]
-[ext_resource type="Texture2D" uid="uid://cvav8cn6x7hfg" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile015.png" id="8_xhii8"]
-[ext_resource type="Texture2D" uid="uid://bm5ttq3s6j8vq" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile016.png" id="9_s7ww5"]
-[ext_resource type="Texture2D" uid="uid://qajub5diqlll" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-right/tile017.png" id="10_86quf"]
-[ext_resource type="Texture2D" uid="uid://cvbp4ppm5ns6w" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile009.png" id="11_c1sm6"]
-[ext_resource type="Texture2D" uid="uid://daasdwwbepsil" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile010.png" id="12_7w2aq"]
-[ext_resource type="Texture2D" uid="uid://cc2vbp417emxg" path="res://assets/placeholder-assets/neo-zero-character/blue/walk-towards/tile011.png" id="13_j2ywv"]
+[ext_resource type="Texture2D" uid="uid://basfkviqdkrm6" path="res://assets/player/neo-zero-character/blue/walk-away/tile012.png" id="2_spttm"]
+[ext_resource type="Texture2D" uid="uid://by6ogum4k4ivi" path="res://assets/player/neo-zero-character/blue/walk-away/tile013.png" id="3_lmrst"]
+[ext_resource type="Texture2D" uid="uid://cnget2js4ixu7" path="res://assets/player/neo-zero-character/blue/walk-away/tile014.png" id="4_p0tcn"]
+[ext_resource type="Texture2D" uid="uid://dq7jrtguswrix" path="res://assets/player/neo-zero-character/blue/walk-left/tile018.png" id="5_gkt4m"]
+[ext_resource type="Texture2D" uid="uid://dul43pdpfpomd" path="res://assets/player/neo-zero-character/blue/walk-left/tile019.png" id="6_lmhn4"]
+[ext_resource type="Texture2D" uid="uid://bon5vvgbm2dce" path="res://assets/player/neo-zero-character/blue/walk-left/tile020.png" id="7_34d6i"]
+[ext_resource type="Texture2D" uid="uid://cvav8cn6x7hfg" path="res://assets/player/neo-zero-character/blue/walk-right/tile015.png" id="8_xhii8"]
+[ext_resource type="Texture2D" uid="uid://bm5ttq3s6j8vq" path="res://assets/player/neo-zero-character/blue/walk-right/tile016.png" id="9_s7ww5"]
+[ext_resource type="Texture2D" uid="uid://qajub5diqlll" path="res://assets/player/neo-zero-character/blue/walk-right/tile017.png" id="10_86quf"]
+[ext_resource type="Texture2D" uid="uid://cvbp4ppm5ns6w" path="res://assets/player/neo-zero-character/blue/walk-towards/tile009.png" id="11_c1sm6"]
+[ext_resource type="Texture2D" uid="uid://daasdwwbepsil" path="res://assets/player/neo-zero-character/blue/walk-towards/tile010.png" id="12_7w2aq"]
+[ext_resource type="Texture2D" uid="uid://cc2vbp417emxg" path="res://assets/player/neo-zero-character/blue/walk-towards/tile011.png" id="13_j2ywv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx4y3"]
 size = Vector2(12, 21)
@@ -253,7 +253,7 @@ _data = {
 }
 
 [node name="BaseCharacter" type="CharacterBody2D" groups=["player"]]
-collision_mask = 8
+collision_mask = 12
 script = ExtResource("1_5yn6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
@@ -263,7 +263,8 @@ shape = SubResource("RectangleShape2D_qx4y3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.917629, 0.946264)
 sprite_frames = SubResource("SpriteFrames_avq8n")
-animation = &"idle-blue"
+animation = &"walk-away-blue"
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
