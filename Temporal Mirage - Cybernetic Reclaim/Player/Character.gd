@@ -9,6 +9,8 @@ var max_health = 100
 @onready var health_display = get_parent().get_node("./../CanvasLayer/HealthRemaining")
 
 
+
+
 # Bullet Time variables
 var is_time_slow_active: bool = false
 var time_multiplier: int = 1
@@ -36,6 +38,9 @@ var max_grenades: int = 5 # Maximum number of grenades
 var grenade_cooldown: float = 3.0 # Cooldown between each throw
 var grenade_reload_time: float = 5.0 # Time to reload grenades
 
+var grenade_type = GrenadeType.STANDARD  # Default grenade type
+var grenade_ammo_type = AmmoType.STANDARD  # Default grenade ammo type
+
 var grenade_cooldown_timer: Timer
 var grenade_reload_timer: Timer
 
@@ -47,6 +52,7 @@ func _ready():
 	var gun_instance = MachineGun.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
+	weapon_slot.ammo_type = AmmoType.STANDARD
 	
 	# Initialize timers
 	bullet_time_timer = Timer.new()
@@ -151,6 +157,30 @@ func dash(direction: Vector2):
 
 func get_is_shield_active() -> bool:
 	return is_shield_active
+	
+	
+func set_grenade_type(new_grenade_type, new_ammo_type):
+	grenade_type = new_grenade_type
+	grenade_ammo_type = new_ammo_type
+	grenade_scene = _get_grenade_scene_from_type(new_grenade_type)
+	
+func _get_grenade_scene_from_type(type: GrenadeType) -> PackedScene:
+	var scene_path = "res://BaseClasses/Grenades/"
+	if type != GrenadeType.STANDARD:
+		scene_path += grenade_type_to_string(type)
+	scene_path += "Grenade.tscn"
+	return load(scene_path)
+	
+func grenade_type_to_string(type: GrenadeType) -> String:
+	match type:
+		GrenadeType.STANDARD: return "Standard"
+		GrenadeType.FLASHBANG: return "Flashbang"
+		GrenadeType.EMP: return "EMP"
+		GrenadeType.FRAG: return "Frag"
+		GrenadeType.GAS: return "Gas"
+		GrenadeType.BLACKHOLE: return "Blackhole"
+		# ... Add other grenade types as needed
+		_: return "Unknown Grenade Type"
 
 func throw_grenade():
 	grenades -= 1
@@ -161,7 +191,7 @@ func throw_grenade():
 			var offset = 150
 			
 			grenade_instance.global_position = global_position + direction * offset
-			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance)
+			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance, grenade_ammo_type)
 			var character_parent = get_parent()
 			character_parent.get_node("./../Grenades").add_child(grenade_instance)
 	else:
@@ -190,7 +220,6 @@ func update_grenade_display():
 func update_health_display():
 	health_display.text = "Health: %d" % [health]
 
-
 func _get_velocity_from_key_in():
 	#TODO separate setting of animation to separate class?
 	var vel = Vector2.ZERO
@@ -207,3 +236,12 @@ func _get_velocity_from_key_in():
 		anim.play("walk-away-blue")
 		vel.y -= 1
 	return vel
+
+func take_damage(amount: int, ammo_type):
+	var multiplier = damage_multiplier[ammo_type][armour_type]
+	var actual_damage = amount * multiplier
+	health -= actual_damage
+	update_health_display()
+	
+	if health <= 0:
+		die()

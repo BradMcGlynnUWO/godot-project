@@ -12,4 +12,3 @@ func _ready():
 	bullets_left = magazine_size
 	max_bullets = magazine_size * 10
 	reload_time = 2.0 # Default reload time
-	
