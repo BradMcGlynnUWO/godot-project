@@ -6,7 +6,7 @@ var fire_rate: float = 1.0 # shots/attacks per second
 var range: float = 100.0
 
 const AmmoType = preload("res://BaseClasses/Damage/AmmoType.gd").AmmoType
-var ammo_type: AmmoType
+var ammo_type: int
 
 
 func use_weapon(character: Node, target_position: Vector2) -> void:
