@@ -17,8 +17,8 @@ var target: Node2D = null
 @onready var health_bar: ProgressBar = $Health/ProgressBar
 
 func _ready():
-	health = 300 # High health
-	movement_speed = 100.0 # Low movement speed
+	armour_type = ArmourType.HEAVY
+	movement_speed = 50.0 # Low movement speed
 	
 	health_bar.set_value_no_signal(health)  # set health in health bar
 	
@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 func attack(target: Node2D) -> void:
 	is_attacking = true
-	target.take_damage(melee_damage)
+	target.take_damage(melee_damage, AmmoType.BLUDGEONING)
 	var knockback_direction = (target.global_position - global_position).normalized()
 	target.apply_knockback(knockback_direction, 100)  # Adjust the magnitude as needed
 	# Add any visual or sound effects for the hammer swing here
@@ -55,9 +55,11 @@ func attack(target: Node2D) -> void:
 func _on_attack_timer_timeout():
 	is_attacking = false
 
-# Override the take_damage method to prevent knockback
-func take_damage(amount: int) -> void:
-	health -= amount
+# Override the take_damage method 
+func take_damage(amount: int, ammo_type):
+	var multiplier  = damage_multiplier[ammo_type][armour_type]
+	var actual_damage = amount * multiplier
+	health -= actual_damage
 	health_bar.set_value_no_signal(health)
 	
 	if health <= 0:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://rcmw025ydmw5"]
 
-[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/GrenadeDrop.gd" id="1_v8kpt"]
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/GrenadeRefillDrop.gd" id="1_v8kpt"]
 [ext_resource type="Texture2D" uid="uid://b1qfihbr88po7" path="res://assets/drop-supports/grenade.png" id="2_4vrrv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1s2o2"]

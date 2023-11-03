@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0k22hpw54m8q"]
+[gd_scene load_steps=19 format=3 uid="uid://b0k22hpw54m8q"]
 
 [ext_resource type="Texture2D" uid="uid://cem5dumabxyfn" path="res://assets/area-assets/urban-street-assets/neo_zero_tiles_and_buildings_01.png" id="1_3tkot"]
 [ext_resource type="PackedScene" uid="uid://p25d0y06ir23" path="res://Player/Character.tscn" id="2_s2vpi"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://didax8edxgach" path="res://BaseClasses/Drops/Scenes/AmmoTypeDrop.tscn" id="11_n44ck"]
 [ext_resource type="PackedScene" uid="uid://bipvtm2yd7lyk" path="res://BaseClasses/Drops/Scenes/HealthDrop.tscn" id="12_snmm5"]
 [ext_resource type="PackedScene" uid="uid://d2dmg6e2psleq" path="res://BaseClasses/Drops/Scenes/AmmoRefillDrop.tscn" id="13_71ece"]
-[ext_resource type="PackedScene" uid="uid://jemqngqdv5xv" path="res://BaseClasses/Drops/Scenes/GrenadeTypeDrop.tscn" id="13_sj87l"]
 [ext_resource type="PackedScene" uid="uid://bblr1mjm5hmg3" path="res://BaseClasses/Drops/Scenes/ArmourDrop.tscn" id="13_smcuf"]
 [ext_resource type="PackedScene" uid="uid://rcmw025ydmw5" path="res://BaseClasses/Drops/Scenes/GrenadeRefillDrop.tscn" id="14_wmurk"]
 
@@ -629,17 +628,12 @@ position = Vector2(-297, -48)
 position = Vector2(-207, 148)
 
 [node name="AmmoTypeDrop" parent="AmmoDrops" instance=ExtResource("11_n44ck")]
-position = Vector2(-424, -216)
 
 [node name="GrenadeDrops" type="Node" parent="."]
 
 [node name="GrenadeRefillDrop" parent="GrenadeDrops" instance=ExtResource("14_wmurk")]
 position = Vector2(-192, 49)
 
-[node name="GrenadeTypeDrop" parent="GrenadeDrops" instance=ExtResource("13_sj87l")]
-position = Vector2(-259, -187)
-
 [node name="ArmourDrops" type="Node" parent="."]
 
 [node name="ArmourDrop" parent="ArmourDrops" instance=ExtResource("13_smcuf")]
-position = Vector2(-394, 586)

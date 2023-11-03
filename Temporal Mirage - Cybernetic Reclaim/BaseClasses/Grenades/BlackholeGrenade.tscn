@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://enmhuwna0huq"]
+
+[ext_resource type="Script" path="res://BaseClasses/Grenades/BlackholeGrenade.gd" id="1_eykw5"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="1_ra5qc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbyeh"]
+
+[node name="BlackholeGrenade" type="Area2D"]
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("1_eykw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_nbyeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ra5qc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,7 @@
 class_name Gun
-extends Node
+extends Weapon
 
-var damage: int = 10
-var fire_rate: float = 1.0
+
 var weapon_range: float = 300.0
 var bullet_speed: float = 600.0
 var bullet_scene = preload("res://BaseClasses/Bullets/Bullet.tscn")
@@ -17,6 +16,8 @@ var is_reloading: bool = false
 
 
 func _ready():
+	damage = 10
+	fire_rate = 1.0
 	
 	print("Gun class initialized")
 	print("Gun _ready()")
@@ -40,7 +41,9 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			var offset = 150
 			bullet_instance.global_position = character.global_position + direction * offset
 			
-			bullet_instance.setup(direction, bullet_speed, damage, weapon_range)
+			print("Ammo type in Gun: ", ammo_type)
+			bullet_instance.setup(direction, bullet_speed, damage, weapon_range, self.ammo_type)
+			
 			if bullet_instance == null:
 				printerr("Bullet instance is null after setup!")
 				return

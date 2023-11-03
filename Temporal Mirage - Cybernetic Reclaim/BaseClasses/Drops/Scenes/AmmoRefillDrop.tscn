@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://0r4u0c2i7huu"]
+[gd_scene load_steps=4 format=3 uid="uid://d2dmg6e2psleq"]
 
-[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/AmmoDrop.gd" id="1_rnfy6"]
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/AmmoRefillDrop.gd" id="1_mpyhs"]
 [ext_resource type="Texture2D" uid="uid://umge48mam0ri" path="res://assets/drop-supports/ammo.png" id="2_dqavq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x82jd"]
 radius = 45.6946
 
 [node name="AmmoDrop" type="Area2D"]
-script = ExtResource("1_rnfy6")
+script = ExtResource("1_mpyhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x82jd")

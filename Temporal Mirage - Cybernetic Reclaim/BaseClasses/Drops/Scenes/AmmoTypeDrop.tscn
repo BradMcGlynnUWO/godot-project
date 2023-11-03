@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://didax8edxgach"]
+
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/AmmoTypeDrop.gd" id="1_u5s81"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_w3ypu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whsiv"]
+radius = 52.0865
+
+[node name="AmmoTypeDrop" type="Area2D"]
+script = ExtResource("1_u5s81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_whsiv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.648438, 0.609375)
+texture = ExtResource("2_w3ypu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = 64.0
+offset_right = 17.0
+offset_bottom = 87.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
