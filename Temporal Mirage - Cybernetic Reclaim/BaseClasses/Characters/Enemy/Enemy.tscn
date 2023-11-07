@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj1d6m24wip3b"]
+
+[ext_resource type="Script" path="res://BaseClasses/Characters/Enemy/Enemy.gd" id="1_cocv4"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_3yv28"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hld80"]
+radius = 41.0122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10joc"]
+radius = 266.017
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_cocv4")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hld80")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_10joc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -1)
+scale = Vector2(0.46875, 0.445313)
+texture = ExtResource("2_3yv28")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

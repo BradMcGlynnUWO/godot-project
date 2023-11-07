@@ -31,9 +31,15 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 			# Adjust the bullet’s position
 			var offset = 150
 			grenade_instance.global_position = character.global_position + direction * offset
-			
+
 			var character_parent = character.get_parent()
+			#if character.is_in_group("player"):
+				
 			character_parent.get_node("./../Grenades").add_child(grenade_instance)
+			#else:
+				#character.get_node("./Grenades").add_child(grenade_instance)
+			
+			
 			can_shoot = false
 			var timer = character.get_tree().create_timer(1.0 / fire_rate) # Create a timer
 			timer.connect("timeout",  Callable(self, "_on_timer_timeout")) # Connect to a new method to reset can_shoot

@@ -19,11 +19,11 @@ func _process(delta):
 	if initial_position.distance_to(global_position) > weapon_range:
 		queue_free()
 
-func setup(dir: Vector2, spd: float, dmg: int, weapon_range: float, ammo_type: AmmoType) -> void:
+func setup(dir: Vector2, spd: float, dmg: int, new_weapon_range: float, ammo_type: AmmoType) -> void:
 	self.direction = dir
 	self.speed = spd
 	self.damage = dmg
-	self.weapon_range = weapon_range
+	self.weapon_range = new_weapon_range
 	self.ammo_type = ammo_type
 	
 
