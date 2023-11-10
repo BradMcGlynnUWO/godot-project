@@ -6,6 +6,7 @@ const Pistol = preload("res://BaseClasses/Weapons/Pistol.gd")
 const Shotgun = preload("res://BaseClasses/Weapons/Shotgun.gd")
 const Rifle = preload("res://BaseClasses/Weapons/Rifle.gd")
 """
+const DualPistols = preload("res://BaseClasses/Weapons/Guns/DualPistols.gd")
 const GrenadeLauncher = preload("res://BaseClasses/Weapons/Guns/GrenadeLauncher.gd")
 const MachineGun = preload("res://BaseClasses/Weapons/Guns/MachineGun.gd")
 const SniperRifle = preload("res://BaseClasses/Weapons/Guns/SniperRifle.gd")
@@ -13,9 +14,7 @@ const SniperRifle = preload("res://BaseClasses/Weapons/Guns/SniperRifle.gd")
 
 # List of weapon classes
 const WeaponClassesArray = [
-	#Pistol,
-	#Shotgun,
-	#Rifle,
+	DualPistols,
 	GrenadeLauncher,
 	MachineGun,
 	SniperRifle
@@ -35,7 +34,7 @@ func _ready():
 	weapon_label.text = weapon_class_to_string(weapon_class)
 
 func _on_body_entered(body: Node):
-	if body is BaseCharacter and body.is_in_group("player"):
+	if body.is_in_group("player"):
 		body.swap_weapon(weapon_class)
 		body.update_ammo_display()
 		queue_free()  # Remove the weapon drop from the scene
@@ -43,8 +42,8 @@ func _on_body_entered(body: Node):
 func weapon_class_to_string(weapon_script: Script) -> String:
 	# This function returns a string representation of the weapon class
 	# You can customize this function based on your needs
-	#if weapon_script == Pistol:
-	#	return "Pistol"
+	if weapon_script == DualPistols:
+		return "Pistol"
 	#elif weapon_script == Shotgun:
 	#	return "Shotgun"
 	#elif weapon_script == Rifle:

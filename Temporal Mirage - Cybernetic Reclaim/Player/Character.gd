@@ -89,7 +89,7 @@ func _ready():
 	update_grenade_display()
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# move_and_slide() uses this velocity to mvoe the character
 	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
 	move_and_slide()

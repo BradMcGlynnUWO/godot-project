@@ -34,12 +34,12 @@ func _process(delta):
 
 
 
-func setup(dir: Vector2, spd: float, dmg: int, max_distance: float, ammo_type: AmmoType) -> void:
+func setup(dir: Vector2, spd: float, dmg: int, max_dis: float, new_ammo_type: int) -> void:
 	self.direction = dir
 	self.speed = spd
 	self.damage = dmg
-	self.max_distance = max_distance
-	self.ammo_type = ammo_type
+	self.max_distance = max_dis
+	self.ammo_type = new_ammo_type
 
 
 func explode():
