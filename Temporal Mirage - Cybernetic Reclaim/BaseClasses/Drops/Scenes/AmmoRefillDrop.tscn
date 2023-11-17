@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2dmg6e2psleq"]
+
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/AmmoRefillDrop.gd" id="1_mpyhs"]
+[ext_resource type="Texture2D" uid="uid://umge48mam0ri" path="res://assets/drop-supports/ammo.png" id="2_dqavq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x82jd"]
+radius = 45.6946
+
+[node name="AmmoDrop" type="Area2D"]
+script = ExtResource("1_mpyhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x82jd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -12)
+scale = Vector2(2.40625, 2.5)
+texture = ExtResource("2_dqavq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -45.0
+offset_top = 38.0
+offset_right = 49.0
+offset_bottom = 64.0
+text = "Ammo Refill"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

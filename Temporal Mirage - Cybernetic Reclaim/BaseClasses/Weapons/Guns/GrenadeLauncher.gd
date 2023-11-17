@@ -14,29 +14,32 @@ func _ready():
 	magazine_size = 6 
 	bullets_left = magazine_size
 	reload_time = 2.0 
+	ammo_type = AmmoType.EXPLOSIVE
 
 func use_weapon(character: Node, target_position: Vector2) -> void:
 	if can_shoot and not is_reloading:
 		if bullets_left > 0:
+			var direction = (target_position - character.global_position).normalized()
+			
 			var grenade_instance = grenade_scene.instantiate()
 			if grenade_instance == null:
-				printerr("Bullet instantiation failed!")
+				printerr("Grenade instantiation failed!")
 				return
 
-			var direction = (target_position - character.global_position).normalized()
+			grenade_instance.setup(direction, bullet_speed, damage, weapon_range, ammo_type)
 			
 			# Adjust the bullet’s position
 			var offset = 150
 			grenade_instance.global_position = character.global_position + direction * offset
-			
-			# Add collision exception
-			#bullet_instance.setup(direction, bullet_speed, damage, weapon_range)
-			if grenade_instance == null:
-				printerr("Bullet instance is null after setup!")
-				return
 
+			var character_parent = character.get_parent()
+			#if character.is_in_group("player"):
+				
+			character_parent.get_node("./../Grenades").add_child(grenade_instance)
+			#else:
+				#character.get_node("./Grenades").add_child(grenade_instance)
 			
-			character.get_tree().get_root().get_node("main/Grenades").add_child(grenade_instance)
+			
 			can_shoot = false
 			var timer = character.get_tree().create_timer(1.0 / fire_rate) # Create a timer
 			timer.connect("timeout",  Callable(self, "_on_timer_timeout")) # Connect to a new method to reset can_shoot

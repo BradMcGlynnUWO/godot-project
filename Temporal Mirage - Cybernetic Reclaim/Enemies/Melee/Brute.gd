@@ -11,38 +11,39 @@ var target: Node2D = null
 @export var detection_radius: float = 600.0
 
 # Onready variables
-@onready var detection_area: Area2D = $DetectionArea
-@onready var detection_collision_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
-
-
+@onready var detection_area: Area2D = $TargetDetectionArea
+@onready var detection_collision_shape: CollisionShape2D = $TargetDetectionArea/CollisionShape2D
+@onready var anim = get_node("AnimationPlayer")
+@onready var health_bar: ProgressBar = $Health/ProgressBar
 
 func _ready():
-	health = 300 # High health
-	movement_speed = 100.0 # Low movement speed
-	collision_layer = 1 << 1 # This sets the second bit, representing layer 2
-	collision_mask = 1 << 2  # This sets the third bit, representing layer 3 (Bullet)
+	armour_type = ArmourType.HEAVY
+	movement_speed = 50.0 # Low movement speed
 	
+	health_bar.set_value_no_signal(health)  # set health in health bar
 	
 	# Setup detection area
 	var detection_shape: CircleShape2D = CircleShape2D.new()
 	detection_shape.radius = detection_radius
 	detection_collision_shape.shape = detection_shape
 
-	# Connect signals
-	detection_area.connect("body_entered", Callable(self, "_on_body_entered"))
-	detection_area.connect("body_exited", Callable(self, "_on_body_exited"))
-
-func _process(delta):
+func _physics_process(delta):
 	if target:
+		anim.play("walk-towards")
 		var direction_to_target = target.global_position - global_position
 		if direction_to_target.length() < melee_attack_range and not is_attacking:
 			attack(target)
 		elif direction_to_target.length() < detection_radius:
-			move(direction_to_target.normalized(), delta)
+			velocity = direction_to_target.normalized() * movement_speed
+			move_and_slide()
+	else:
+		anim.play("idle")
 
 func attack(target: Node2D) -> void:
 	is_attacking = true
-	target.take_damage(melee_damage)
+	target.take_damage(melee_damage, AmmoType.BLUDGEONING)
+	var knockback_direction = (target.global_position - global_position).normalized()
+	target.apply_knockback(knockback_direction, 100)  # Adjust the magnitude as needed
 	# Add any visual or sound effects for the hammer swing here
 	var attack_timer = Timer.new()
 	attack_timer.wait_time = 2.0 # 1 second attack cooldown
@@ -54,18 +55,23 @@ func attack(target: Node2D) -> void:
 func _on_attack_timer_timeout():
 	is_attacking = false
 
-# Override the take_damage method to prevent knockback
-func take_damage(amount: int) -> void:
-	health -= amount
-	print(health)
+# Override the take_damage method 
+func take_damage(amount: int, ammo_type):
+	var multiplier  = damage_multiplier[ammo_type][armour_type]
+	var actual_damage = amount * multiplier
+	health -= actual_damage
+	health_bar.set_value_no_signal(health)
+	
 	if health <= 0:
 		die()
+	
+	health_bar.set_value_no_signal(health)
 
-func _on_body_entered(body: Node2D):
+func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		target = body
 
 
-func _on_body_exited(body: Node2D):
+func _on_detection_area_body_exited(body):
 	if body == target:
 		target = null

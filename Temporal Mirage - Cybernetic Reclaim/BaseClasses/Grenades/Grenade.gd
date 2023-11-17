@@ -1,4 +1,8 @@
+class_name Grenade
 extends Area2D
+const AmmoType = preload("res://BaseClasses/Damage/AmmoType.gd").AmmoType
+var ammo_type: AmmoType = AmmoType.EXPLOSIVE
+
 
 var explosion_radius: float = 100.0
 var knockback_force: float = 500.0
@@ -12,8 +16,6 @@ var timer: Timer
 var timer_started: bool = false
 
 func _ready():
-	collision_layer = 1 << 2 # This sets the third bit, representing layer 3
-	collision_mask = (1 << 0) | (1 << 1)  # This sets the first and second bits, representing layers 1 (Player) and 2 (Enemy)
 	initial_position = global_position
 	initial_position = global_position
 	timer = Timer.new()
@@ -32,11 +34,12 @@ func _process(delta):
 
 
 
-func setup(dir: Vector2, spd: float, dmg: int, max_distance: float) -> void:
+func setup(dir: Vector2, spd: float, dmg: int, max_dis: float, new_ammo_type: int) -> void:
 	self.direction = dir
 	self.speed = spd
 	self.damage = dmg
-	self.max_distance = max_distance
+	self.max_distance = max_dis
+	self.ammo_type = new_ammo_type
 
 
 func explode():
@@ -55,7 +58,7 @@ func explode():
 			# Apply knockback and damage if the body is of type BaseCharacter
 			if body is BaseCharacter:
 				body.apply_knockback(knockback_direction, knockback_magnitude)
-				body.take_damage(damage)
+				body.take_damage(damage, ammo_type)
 
 	# Destroy the grenade after explosion
 	queue_free()

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://o47gknhhjjsj"]
+
+[ext_resource type="Theme" uid="uid://dktv2i0iswy38" path="res://Enemies/styles/theme1.tres" id="1_rsqdm"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.121
+anchor_bottom = 0.113
+offset_right = -0.392014
+offset_bottom = -0.224007
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 8.0
+theme = ExtResource("1_rsqdm")
+step = 1.0
+show_percentage = false

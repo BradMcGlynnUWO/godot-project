@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://3mhir4tmtul0"]
 
 [ext_resource type="Script" path="res://BaseClasses/Bullets/Bullet.gd" id="1_nypmm"]
-[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_4k4qt"]
+[ext_resource type="Texture2D" uid="uid://b2psulwd7al2v" path="res://assets/player/bullets/bullet.png" id="2_lxsdg"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhcla"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpxd"]
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_nypmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, 1.90735e-06)
-scale = Vector2(0.140625, 0.210938)
-texture = ExtResource("2_4k4qt")
+position = Vector2(0, -1.19209e-07)
+rotation = 1.5708
+scale = Vector2(0.461914, 0.372559)
+texture = ExtResource("2_lxsdg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_vhcla")
+shape = SubResource("CapsuleShape2D_alpxd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

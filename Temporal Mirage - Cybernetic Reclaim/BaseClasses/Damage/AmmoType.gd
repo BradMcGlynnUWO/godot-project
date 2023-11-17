@@ -1,0 +1,12 @@
+enum AmmoType {
+	STANDARD,
+	ACIDIC,
+	ELECTRIC,
+	FIRE,
+	EXPLOSIVE,
+	ENERGY,
+	PIERCING,
+	BLUDGEONING,
+	SLASHING,
+	# more to come 
+}

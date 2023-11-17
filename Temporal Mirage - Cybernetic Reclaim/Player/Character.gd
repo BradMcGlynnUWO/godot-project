@@ -1,6 +1,15 @@
 extends BaseCharacter
 
 var can_shoot: bool = true
+var max_health = 100
+
+@onready var anim = get_node("AnimationPlayer")
+@onready var ammo_display = get_parent().get_node("./../CanvasLayer/AmmoDisplay")
+@onready var grenade_display = get_parent().get_node("./../CanvasLayer/GrenadeDisplay")
+@onready var health_display = get_parent().get_node("./../CanvasLayer/HealthRemaining")
+
+
+
 
 # Bullet Time variables
 var is_time_slow_active: bool = false
@@ -29,18 +38,21 @@ var max_grenades: int = 5 # Maximum number of grenades
 var grenade_cooldown: float = 3.0 # Cooldown between each throw
 var grenade_reload_time: float = 5.0 # Time to reload grenades
 
+var grenade_type = GrenadeType.STANDARD  # Default grenade type
+var grenade_ammo_type = AmmoType.STANDARD  # Default grenade ammo type
+
 var grenade_cooldown_timer: Timer
 var grenade_reload_timer: Timer
 
 
 func _ready():
 	health = 100
-	movement_speed = 30.0
+	movement_speed = 100
+	set_motion_mode(1)   # default motion mode is for platformers, this mode is for top down's
 	var gun_instance = MachineGun.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
-	collision_layer = 1 << 0
-	collision_mask = 1 << 2
+	weapon_slot.ammo_type = AmmoType.STANDARD
 	
 	# Initialize timers
 	bullet_time_timer = Timer.new()
@@ -71,19 +83,19 @@ func _ready():
 	grenade_reload_timer.one_shot = true
 	grenade_reload_timer.connect("timeout", Callable(self, "reload_grenades"))
 	add_child(grenade_reload_timer)
-
-func _process(delta):
-	var direction = Vector2.ZERO
-	if Input.is_action_pressed('ui_right'):
-		direction.x += 1
-	if Input.is_action_pressed('ui_left'):
-		direction.x -= 1
-	if Input.is_action_pressed('ui_down'):
-		direction.y += 1
-	if Input.is_action_pressed('ui_up'):
-		direction.y -= 1
 	
-	move(direction, delta * time_multiplier * movement_speed)
+	update_health_display()
+	update_ammo_display()
+	update_grenade_display()
+	
+
+func _physics_process(_delta):
+	# move_and_slide() uses this velocity to mvoe the character
+	velocity = _get_velocity_from_key_in()  * time_multiplier * movement_speed
+	move_and_slide()
+	
+	if velocity.x == 0 and velocity.y == 0:
+		anim.play("idle-blue")
 
 	if Input.is_action_pressed('ui_select') and can_shoot:
 		shoot()
@@ -98,7 +110,7 @@ func _process(delta):
 	
 	# Predictive Echo / Dash activation
 	if Input.is_action_just_pressed('dash') and dash_timer.is_stopped():
-		dash(direction)
+		dash(velocity)
 
 	# Grenade throw activation
 	if Input.is_action_just_pressed('ui_throw_grenade') and grenades > 0 and grenade_cooldown_timer.is_stopped():
@@ -112,6 +124,7 @@ func shoot():
 	var timer = get_tree().create_timer(1.0 / weapon_slot.fire_rate)
 	await timer.timeout
 	can_shoot = true
+	update_ammo_display()
 
 func activate_time_slow():
 	print("Time slow activated")
@@ -144,6 +157,30 @@ func dash(direction: Vector2):
 
 func get_is_shield_active() -> bool:
 	return is_shield_active
+	
+	
+func set_grenade_type(new_grenade_type, new_ammo_type):
+	grenade_type = new_grenade_type
+	grenade_ammo_type = new_ammo_type
+	grenade_scene = _get_grenade_scene_from_type(new_grenade_type)
+	
+func _get_grenade_scene_from_type(type: GrenadeType) -> PackedScene:
+	var scene_path = "res://BaseClasses/Grenades/"
+	if type != GrenadeType.STANDARD:
+		scene_path += grenade_type_to_string(type)
+	scene_path += "Grenade.tscn"
+	return load(scene_path)
+	
+func grenade_type_to_string(type: GrenadeType) -> String:
+	match type:
+		GrenadeType.STANDARD: return "Standard"
+		GrenadeType.FLASHBANG: return "Flashbang"
+		GrenadeType.EMP: return "EMP"
+		GrenadeType.FRAG: return "Frag"
+		GrenadeType.GAS: return "Gas"
+		GrenadeType.BLACKHOLE: return "Blackhole"
+		# ... Add other grenade types as needed
+		_: return "Unknown Grenade Type"
 
 func throw_grenade():
 	grenades -= 1
@@ -154,19 +191,57 @@ func throw_grenade():
 			var offset = 150
 			
 			grenade_instance.global_position = global_position + direction * offset
-			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance)
-			get_tree().get_root().get_node("main/Grenades").add_child(grenade_instance)
+			grenade_instance.setup(direction, grenade_speed, grenade_damage, grenade_distance, grenade_ammo_type)
+			var character_parent = get_parent()
+			character_parent.get_node("./../Grenades").add_child(grenade_instance)
 	else:
 		printerr("Grenade scene is null!")
 
-	
-
 	# Start the cooldown timer
 	grenade_cooldown_timer.start()
+	update_grenade_display()
 
-	# If out of grenades, start the reload timer
-	if grenades <= 0:
-		grenade_reload_timer.start()
 
 func reload_grenades():
+	grenade_reload_timer.start()
 	grenades = max_grenades
+	update_grenade_display()
+	
+func update_ammo_display():
+	if ammo_display and ammo_display is Label:
+		ammo_display.text = "Ammo: %d/%d, Bullets Remaining: %d" % [weapon_slot.bullets_left, weapon_slot.magazine_size, weapon_slot.max_bullets]
+
+func refill_weapon():
+	weapon_slot.max_bullets = weapon_slot.magazine_size * 10
+
+func update_grenade_display():
+	grenade_display.text = "Grenades: %d/%d" % [grenades, max_grenades]
+
+func update_health_display():
+	health_display.text = "Health: %d" % [health]
+
+func _get_velocity_from_key_in():
+	#TODO separate setting of animation to separate class?
+	var vel = Vector2.ZERO
+	if Input.is_action_pressed('ui_right'):
+		anim.play("walk-right-blue")
+		vel.x += 1
+	if Input.is_action_pressed('ui_left'):
+		anim.play("walk-left-blue")
+		vel.x -= 1
+	if Input.is_action_pressed('ui_down'):
+		anim.play("walk-towards-blue")
+		vel.y += 1
+	if Input.is_action_pressed('ui_up'):
+		anim.play("walk-away-blue")
+		vel.y -= 1
+	return vel
+
+func take_damage(amount: int, ammo_type):
+	var multiplier = damage_multiplier[ammo_type][armour_type]
+	var actual_damage = amount * multiplier
+	health -= actual_damage
+	update_health_display()
+	
+	if health <= 0:
+		die()

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyhgoavqyhmwf"]
+
+[ext_resource type="Script" path="res://BaseClasses/Characters/BaseCharacter.gd" id="1_l0vp5"]
+[ext_resource type="Texture2D" uid="uid://mlgssr4jqxls" path="res://icon.svg" id="2_q0fax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sc2tr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_su5hd"]
+
+[node name="DualPistolGrunt" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 2
+script = ExtResource("1_l0vp5")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sc2tr")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_su5hd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q0fax")

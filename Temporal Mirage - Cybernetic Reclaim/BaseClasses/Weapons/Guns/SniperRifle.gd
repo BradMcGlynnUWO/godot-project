@@ -9,4 +9,5 @@ func _ready():
 	# Magazine and reload variables
 	magazine_size = 6 # Default to a medium value
 	bullets_left = magazine_size
+	max_bullets = magazine_size * 6
 	reload_time = 8.0 # Default reload time

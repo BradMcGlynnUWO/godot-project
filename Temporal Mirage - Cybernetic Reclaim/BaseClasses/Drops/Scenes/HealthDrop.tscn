@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bipvtm2yd7lyk"]
+
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/HealthDrop.gd" id="1_sywcy"]
+[ext_resource type="Texture2D" uid="uid://ctt2rluis0o2i" path="res://assets/drop-supports/health-pack.png" id="2_lg8gw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkbxl"]
+radius = 34.0147
+
+[node name="HealthDrop" type="Area2D"]
+script = ExtResource("1_sywcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mkbxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999996, -10)
+scale = Vector2(1.63672, 1.49219)
+texture = ExtResource("2_lg8gw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = 37.0
+offset_right = 26.0
+offset_bottom = 63.0
+text = "Health
+"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

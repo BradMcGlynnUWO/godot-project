@@ -8,14 +8,11 @@ extends BaseCharacter
 @onready var detection_collision_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
 
 func _ready():
-	health = 50
+	armour_type= ArmourType.MEDIUM
 	movement_speed = 150.0
 	var gun_instance = SniperRifle.new()
 	add_child(gun_instance)
 	weapon_slot = gun_instance
-	
-	collision_layer = 1 << 1 # This sets the second bit, representing layer 2
-	collision_mask = 1 << 2  # This sets the third bit, representing layer 3 (Bullet)
 
 	# Setup detection area
 	var detection_shape: CircleShape2D = CircleShape2D.new()
@@ -32,7 +29,8 @@ func _process(delta):
 	if target:
 		var direction_to_target = target.global_position - global_position
 		if direction_to_target.length() < detection_radius:
-			move(-direction_to_target.normalized(), delta)
+			velocity = -direction_to_target.normalized() * movement_speed
+			move_and_slide()
 			weapon_slot.use_weapon(self, target.global_position)
 			print("Target Position: ", target.global_position)
 		else:

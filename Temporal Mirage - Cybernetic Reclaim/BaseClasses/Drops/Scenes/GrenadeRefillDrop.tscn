@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://rcmw025ydmw5"]
+
+[ext_resource type="Script" path="res://BaseClasses/Drops/Scripts/GrenadeRefillDrop.gd" id="1_v8kpt"]
+[ext_resource type="Texture2D" uid="uid://b1qfihbr88po7" path="res://assets/drop-supports/grenade.png" id="2_4vrrv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1s2o2"]
+radius = 80.399
+
+[node name="GrenadeDrop" type="Area2D"]
+script = ExtResource("1_v8kpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(1.30469, 1.44531)
+texture = ExtResource("2_4vrrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1s2o2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -37.0
+offset_top = 21.0
+offset_right = 38.0
+offset_bottom = 47.0
+text = "Grenades
+"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
