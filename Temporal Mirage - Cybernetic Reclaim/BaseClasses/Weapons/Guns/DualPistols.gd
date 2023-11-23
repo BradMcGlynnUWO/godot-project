@@ -17,7 +17,7 @@ func use_weapon(character: Node, target_position: Vector2) -> void:
 		if bullets_left > 1: # Need at least 2 bullets to shoot
 			# Fire two bullets
 			for i in range(2):
-				var bullet_instance = bullet_scene.instance()
+				var bullet_instance = bullet_scene.instantiate()
 				if bullet_instance == null:
 					printerr("Bullet instantiation failed!")
 					return
